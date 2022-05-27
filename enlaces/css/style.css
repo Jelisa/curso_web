@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+body{
+    background-color: rgba(242, 137, 221, 0.883)
+}
+h1{
+    color: blue;
+    font-size: 40px;
+}
+nav{
+    background-color: rgba(0, 255, 255, 0.519);
+    color: aliceblue;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+a{
+    color: rgb(57, 7, 103);
+    text-decoration: none;
+}
+nav ul, nav li{
+    display: inline;
+}
+/* nav li {
+    float: center;
+} */
+/* header img{
+    padding: 0px;
+} */
+/*el > indica que img está directamente debajo de body*/
+body>img{
+    padding: 10px;
+    background-color: white;
+}
+/* img{
+    padding: 10px;
+    background-color: white;
+} */
+/* ul nav{
+    te
+} */
