@@ -1,0 +1,18 @@
+@charset "utf-8";
+body{
+    background-color: aqua;
+    text-align: justify;
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2em;
+}
+h1 {
+    font-size: 2em;
+}
+body nav a {
+}
+
+img{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.verde{color: darkgreen}
