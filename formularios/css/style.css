@@ -1,0 +1,14 @@
+/* sj */
+@charset "utf-8";
+body {
+    background-color: rgb(133, 233, 233);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+legend{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+p{
+    margin: 0.5em 1em;
+}
