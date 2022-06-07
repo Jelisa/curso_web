@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>diseño web</title>
+        <meta name="PAGENAME" content="CONTENT"/>
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div class="background">
+            <form action="">
+                <div class="container">
+                    <fieldset>
+                        <legend>Datos Personales</legend>
+                        <div class="line">
+                            <div class="fieldname"><label for="nombre">Nombre</label></div>
+                            <div class="field fieldtextbox"><input type="text" id="nombre" name="nombre" required></div>
+                        </div>
+                        <div class="line">
+                            <div class="fieldname"><label for="email">Correo electrónico</label></div>
+                            <div class="field fieldtextbox"><input type="email" id="email" name="correo" required></div>      
+                        </div>
+                        <div class="line">¿Qué turno prefieres?</div>
+                        <div class="line">
+                            <div class="field radiobutton"><input type="radio" id="mañana" name="turno" value="mañana"></div>
+                            <div class="fieldname"><label for="mañana">Mañana</label></div>
+                            <div class="field radiobutton"><input type="radio" id="tarde" name="turno" value="tarde"></div>
+                            <div class="fieldname"><label for="tarde">Tarde</label></div>                            
+                        </div>
+                        <div class="line">
+                            <div class="fieldname"><label for="cumple">Fecha de nacimiento</label></div>
+                            <div class="field fieldate"><input type="date" id="cumple" name="cumple" value="1/1/1000" 
+                                min="1900-01-01" max="2004-12-31-" ></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="container">
+                    <div class="line">
+                        <div class="fieldname"><label for="estudios">Nivel de estudios</label></div>
+                        <div class="field single_selection">
+                            <select name="estudios" id="estudios" class="field">
+                                <option value=""></option>
+                                <option value="graduado_escolar">Graduado Escolar</option>
+                                <option value="Bachillerato">Bachillerato</option>
+                                <option value="Graduado/Master">Graduado o Máster</option>
+                                <option value="Doctorado">Doctorado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="fieldname"><label for="intereses">Áreas de interés</label></div>
+                        <div class="field multi_selection">
+                            <select name="intereses" id="intereses" multiple size="3" class="field">
+                                <option value="manualidades">manualidades</option>
+                                <option value="interpretacion">interpretación</option>
+                                <option value="informatica">informática</option>
+                                <option value="ciencias">ciencias</option>
+                                <option value="ingenieria">ingenieria</option>
+                                <option value="diseño">diseño</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line">¿Cómo nos has conocido?</div>
+                    <div class="line">
+                        <div class="field checkbox"><input type="checkbox" id="amigos" name="conocido_por" value="amigos"></div>
+                        <div class="fieldname"><label for="amigos"></label>Amigos</div>
+                        <div class="field checkbox"><input type="checkbox" id="prensa" name="conocido_por" value="amigos"></div>
+                        <div class="fieldname"><label for="prensa"></label>Prensa</div>
+                        <div class="field checkbox"><input type="checkbox" id="web" name="conocido_por" value="amigos"></div>
+                        <div class="fieldname"><label for="web">Web</label></div>
+                    </div>
+                    <div class="line">¿Eres un alumno nuevo?</div>
+                    <div class="line">
+                        <div class="field radiobutton"><input type="radio" id="si" name="nuevo_al" value="1"></div>
+                        <div class="fieldname"><label for="si">Sí</label></div>
+                        <div class="field radiobutton"><input type="radio" id="no" name="nuevo_al" value="0"></div>
+                        <div class="fieldname"><label for="no">No</label></div>       
+                    </div>
+                    <div class="line">
+                        <div class="field list">
+                            <input list="habilidades" name="habilidades">
+                            <datalist id="habilidades">
+                                <option value="coser">
+                                <option value="matemáticas">
+                                <option value="cortar">
+                                <option value="">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="fieldname"><label for="size">Talla numeros</label></div>
+                        <div class="field"><input type="number" min="36" max="58" step="2" name="size"></div>
+                    </div>
+                    <div class="line">
+                        <div class="fieldname"><label for="size">Barra de Tallas misteriosas</label></div>
+                        <div class="field"><input type="range" min="36" max="58" step="2" name="size"></div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="field "><input type="image" alt="submit" src="imagenes/descarga.jfif" width="5%" class="button"></div>
+                    <div class="field"><input type="reset" value="Borrar Formulario" class="button"></div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
