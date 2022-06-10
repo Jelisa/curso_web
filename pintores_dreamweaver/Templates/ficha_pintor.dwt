@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>Pintores destacados</title>
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="../imagenes/cuadrada.jpg">
+<link rel="stylesheet" href="../css/pintores2.css">
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+</head>
+<body>
+<header><a href="../index.html" title="Volver a Inicio"><img src="../imagenes/logo_ok.jpg"></a>
+<h1>Pintores destacados</h1>
+<nav>
+	<div class="menu">
+		<ul class="menu1">
+		<li class="pintores">Pintores
+			<div class="opciones">
+		<a href="../caravaggio.html">Caravaggio</a>
+		<a href="../sorolla.html">Sorolla</a>
+		<a href="../van_gogh.html">Van Gogh</a>
+		</div>
+			</li>
+			<li>Movimientos</li>
+			<li>Contacto</li>
+			</ul>
+		
+	</div>
+	</nav></header>
+	<section>
+		<h2><!-- TemplateBeginEditable name="Nombre Pintor" -->Nombre Pintor<!-- TemplateEndEditable --></h2>
+		<h3><!-- TemplateBeginEditable name="Introduccion" -->Introducción<!-- TemplateEndEditable --></h3>
+		<div class="contenido">
+		  <div class="foto"><!-- TemplateBeginEditable name="Foto" --><img src="../imagenes/Caravaggio_Sant_Jeroni_penitent,_Montserrat.jpg" alt="Caravaggio"><!-- TemplateEndEditable --></div>
+			<div class="texto"><!-- TemplateBeginEditable name="Descripcion" -->
+			  <p>Pintó unos 800 cuadros (entre ellos 43 autorretratos y 148 acuarelas) y realizó más de 1600 dibujos. Una figura central en su vida fue su hermano menor Theo, marchante de arte en París, quien le prestó apoyo financiero de manera continua y desinteresada. La gran amistad entre ellos está documentada en las numerosas cartas que se intercambiaron desde agosto de 1872.</p>
+				<p>Pintó unos 800 cuadros (entre ellos 43 autorretratos y 148 acuarelas) y realizó más de 1600 dibujos. Una figura central en su vida fue su hermano menor Theo, marchante de arte en París, quien le prestó apoyo financiero de manera continua y desinteresada. La gran amistad entre ellos está documentada en las numerosas cartas que se intercambiaron desde agosto de 1872.</p>
+				<p>Pintó unos 800 cuadros (entre ellos 43 autorretratos y 148 acuarelas) y realizó más de 1600 dibujos. Una figura central en su vida fue su hermano menor Theo, marchante de arte en París, quien le prestó apoyo financiero de manera continua y desinteresada. La gran amistad entre ellos está documentada en las numerosas cartas que se intercambiaron desde agosto de 1872.</p>
+				<p>Pintó unos 800 cuadros (entre ellos 43 autorretratos y 148 acuarelas) y realizó más de 1600 dibujos. Una figura central en su vida fue su hermano menor Theo, marchante de arte en París, quien le prestó apoyo financiero de manera continua y desinteresada. La gran amistad entre ellos está documentada en las numerosas cartas que se intercambiaron desde agosto de 1872.</p>
+			<!-- TemplateEndEditable --></div>
+	  </div>
+	</section>
+	<footer><p>Copyleft. Esto es todo amigos. Escríbenos para <a href="mailto:correo@dominio.es" title="¿tienes una sugerencia o comentario?">sugerencias o comentarios</a> </p></footer>
+</body>
+</html>
