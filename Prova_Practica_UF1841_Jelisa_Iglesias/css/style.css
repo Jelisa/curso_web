@@ -1,0 +1,91 @@
+@charset "utf-8";
+
+body{
+    font-size: 16px;
+    background-color: rgb(127, 255, 212);
+    padding: .1em 4%;
+}
+img{
+    width: 50%;
+    float: left;
+    margin: 0.2em 1em .2em 0em;
+    padding: .25em;
+    border: .3em groove rgb(128, 151, 181);
+    border-radius: .3em;
+}
+h1{
+    margin: auto;
+    text-align: center;
+    margin-bottom: .5em;
+}
+
+h2{
+    font-size: 1.25em;
+}
+
+.paragraf{
+    text-indent: 1em;
+    text-align: justify;
+}
+
+.no_after_space{
+    margin-bottom: 0em;
+}
+
+.required_field{
+    color:rgb(211, 11, 11);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.fieldname, .field, .nav_button {
+    display: inline-block;
+}
+
+.nav_link {
+    text-decoration: none;
+    background-color: rgb(120, 255, 255);
+    color: rgb(95, 158, 160);
+    padding: .25em, .5em;
+    font-size: 1.2em;
+}
+.nav_button{
+    padding: .25em 1em;
+}
+.navigation_menu{
+        background-color: rgb(120, 255, 255);
+        width: fit-content;
+        margin: auto;
+}
+
+.line{
+    padding: .3em 0em;
+}
+
+.bold, strong{
+    font-weight: bold;
+}
+
+.nav_button:hover .nav_link{
+    background-color: rgb(95, 158, 160);
+    color: rgb(120, 255, 255);
+}
+
+.nav_button:hover{
+    background-color: cadetblue;
+}
+
+@media (max-width:600px) {
+    body{
+        font-size: 13px;
+        background-color: rgb(177, 255, 208);
+        padding: .1em 2%;
+    }
+}
+
+@media (min-width:900px) {
+    body{
+        font-size: 19px;
+        background-color: rgb(60, 237, 219);
+    }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html lang="ca">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Formulati de contacte</title>
+        <meta name="author" content="Jelisa Iglesias"/>
+        <link rel="shortcut icon" href="../imagenes/tech.jpg">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Formulari de contacte</h1>
+        </header>
+        <nav class="navigation_menu">
+            <div class="nav_button"><a class="nav_link" href="../index.html" title="Enllaç a realitat augmentada">Realitat augmentada</a></div>
+            <div class="nav_button"><a class="nav_link" href="realitat_virtual.html" title="Enllaç a realitat virtual">Realitat Virtual</a></div>
+            <div class="nav_button"><a class="nav_link" href="contacte.html" title="Enllaç a contacte">Contacte</a></div>
+        </nav>
+        <form action="#">
+            <p>Sol·licitud d'informació</p>
+            <div class="line">
+                <div class="fieldname bold"><label for="nom">Nom</label></div>
+                <div class="field">
+                    <input type="text" id="nom" name="nom" size="12" maxlength="10" required>
+                    <span class="required_field">*</span>
+                </div>
+            </div>
+            <div class="line">
+                <div class="fieldname bold"><label for="correu">Correu</label></div>
+                <div class="field text_box">
+                    <input type="email" id="correu" name="correu" size="20" maxlength="20" required>
+                    <span class="required_field">*</span>
+                </div>
+            </div>
+            <p class="bold no_after_space">Raó Social:</p>
+            <div class="line">
+                <div  class="field radio_button">
+                    <input type="radio" id="particular" name="rao_social" value="particular">
+                </div>
+                <div class="fieldname"><label for="particular">Particular</label></div>
+            </div>
+            <div class="line">
+                <div  class="field radio_button">
+                    <input type="radio" id="empresa" name="rao_social" value="empresa">
+                </div>
+                <div class="fieldname"><label for="empresa">Empresa/Organització</label></div>
+            </div>
+            <p class="bold no_after_space">Està interessat en:</p>
+            <div class="line">
+                <div  class="field check_box">
+                    <input type="checkbox" id="ra" name="interes_ra" value="ra">
+                </div>
+                <div class="fieldname"><label for="ra">Realitat augmentada</label></div>
+            </div>
+            <div class="line">
+                <div  class="field check_box">
+                    <input type="checkbox" id="rv" name="interes_rv" value="rv">
+                </div>
+                <div class="fieldname"><label for="rv">Realitat virtual</label></div>
+            </div>
+            <p><span class="bold no_after_space">Tipus d'ús.</span> Està interessat en un ús:</p>
+            <div class="line">
+                <div  class="field radio_button">
+                    <input type="radio" id="comercial" name="us" value="comercial">
+                </div>
+                <div class="fieldname"><label for="comercial">Comercial</label></div>
+            </div>
+            <div class="line">
+                <div  class="field radio_button">
+                    <input type="radio" id="educatiu" name="us" value="educatiu">
+                </div>
+                <div class="fieldname"><label for="educatiu">Educatiu</label></div>
+            </div>
+            <div class="line">
+                <input type="submit" value="Contactar">
+            </div>
+        </form>
+    </body>
+</html>
