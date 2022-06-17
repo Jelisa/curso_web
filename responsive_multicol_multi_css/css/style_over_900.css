@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+body{
+    background-color: blueviolet;
+    font-size: 120%;
+}
+
+.columna{
+    background-color: aqua;
+    border: 2px solid black;
+    margin: .1em .5%;
+    padding: .1em .5%;
+    text-indent: .5em;
+    text-align: justify;
+    float: left;
+    width: 31%;
+}
+
+
+.columna{
+    width: 29%;
+    float: left;
+}
