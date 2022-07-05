@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function cel_to_ke(valor) {
+            return valor + 275.15;
+        }
+
+        function cel_to_fa(valor) {
+            return valor * 1.8 + 32;
+        }
+        var celsius = prompt('Intro grados :');
+        var conv = prompt('Conversor [F/K]:');
+        conv = conv.toLocaleUpperCase();
+        switch (conv) {
+            case "K": 
+            document.write(celsius + ' C-' + cel_to_ke(celsius) + ' K');
+             break;
+            case "F": document.write(celsius + ' C-' + cel_to_fa(celsius) + ' F'); break;
+            default: document.write('Error');
+
+        }
+    </script>
+</body>
+
+</html>

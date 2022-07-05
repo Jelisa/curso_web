@@ -1,0 +1,32 @@
+<html>
+<head>
+ 
+<script type="text/javascript">
+ 
+  addEventListener('load',inicio,false);
+ 
+  function inicio()
+  {
+    document.getElementById('recuadro1').addEventListener('mouseover',entrada,false);
+    document.getElementById('recuadro1').addEventListener('mouseout',salida,false);
+  }
+ 
+  function entrada()
+  {
+    document.getElementById('recuadro1').style.borderRadius='30px';
+  }
+ 
+  function salida()
+  {
+    document.getElementById('recuadro1').style.borderRadius='0px';
+  }
+ 
+</script>
+ 
+</head>
+<body>
+<div style="width:200px;height:200px;background:#0000ff" id="recuadro1">
+</div>
+ 
+</body>
+</html>

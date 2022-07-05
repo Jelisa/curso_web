@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 800px;
+      height: 800px;
+      position: relative;
+      background: yellow;
+    }
+
+    #animate {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background: red;
+    }
+  </style>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<body>
+
+  <button id="boton" onmouseover="prueba()">Click Me</button>
+
+  <div id="container">
+    <div onmouseover="myMove()" id="animate"></div>
+  </div>
+  <h2 onmousedown="myMove()">Hola</h2>
+
+  <script>
+
+    function prueba() {
+      const y= document.getElementById("boton");
+      posx = parseInt(Math.random()*100);
+      posy= parseInt(Math.random()*100);
+      y.style.top= posx + "px";
+      y.style.left= posy + "px";
+
+    }
+    function myMove() {
+      let id = null;//setinterval
+      const elem = document.getElementById("animate");
+      let pos = 0;
+      let pos2 = 0;
+
+      clearInterval(id);
+      id = setInterval(frame, 10);
+
+
+
+
+      function frame() {
+        if (pos == 350) {
+          elem.style.top = pos2 + "px";
+          elem.style.left = 350 + "px";
+          pos2++;
+
+          if (pos2 == 350) {
+            elem.style.top = pos2 + "px";
+            elem.style.left = 350 + "px";
+            clearInterval(id);
+          }
+        } else {
+          pos++;
+          elem.style.top = 0 + "px";
+          elem.style.left = pos + "px";
+
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

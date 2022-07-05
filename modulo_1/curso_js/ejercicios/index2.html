@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+   <h2>JavaScript Numbers</h2>
+
+   <p>Infinity is returned if you calculate a number outside the largest possible number:</p>
+
+   <p id="demo32">Hola</p>
+
+
+
+   <script>
+      // var num1 = prompt("Num 1", 0);
+      // var num2 = prompt("Num 2", 0);
+      // var oper = prompt("Intro operador: ");
+      // switch (oper) {
+      //    case "+": document.write("SUMA: ",
+      //       parseInt(num1) + parseInt(num2));
+      //       break;
+      //    case "-": document.write("RESTA: ",
+      //       parseInt(num1) - parseInt(num2));
+      //       break;
+      //    case "*": document.write("MULTI: ",
+      //       parseInt(num1) * parseInt(num2));
+      //       break;
+      //    case "?": document.write("Operadores validos +*-/");
+      //       break;
+      //    case "/":
+      //       var resultado = parseInt(num1) / parseInt(num2);
+      //       if (resultado = Infinity) {
+      //          document.write("Error en operación.");
+      //       } else {
+      //          document.write("DIV: ", resultado);
+      //       }
+      //       break;
+      //    default: document.write("Error en operador.");
+      // }
+
+
+      var sexo = prompt("Genero (H/M):");
+      var edad = prompt("Edad: ");
+      var precio;
+      switch (sexo) {
+         case "H":
+            if (parseInt(edad) < 25) {
+               precios = 1000;
+            } else {
+               precio = 700;
+            }
+
+            break;
+         case "M":
+            if (parseInt(edad) < 21) {
+               precio = 500;
+            }
+            break;
+
+         default: document.write("Error en genero.");
+      }
+      document.write("Edad ", edad);
+      document.write("Sexo ", sexo);
+      document.write("Pago ", precio);
+      
+// let myNumber = 2;
+// let txt = "";
+// while (myNumber != Infinity) {
+//    myNumber = myNumber * myNumber;
+//    txt = txt +myNumber + "<br>";
+// }
+// document.getElementById("demo32").innerHTML = txt;
+
+// var any = prompt ("edad: ", 100);
+// alert (any);
+// document.write("La edad es "+any);
+
+   </script>
+
+
+</body>
+
+</html>

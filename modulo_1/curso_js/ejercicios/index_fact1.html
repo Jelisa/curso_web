@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var num=prompt("intro un numero positivo: ");
+    //     if (num >=0){
+    //         var resultado=1;
+
+    //         while ( num !=0){
+    //             resultado = resultado * num;
+    //             num--;
+    //         }
+    //     }    
+    function factorial(n) {
+      let resultado = 1;
+      if (num == 0 || n == 1) {
+        return resultado;
+      } else {
+        for (var i = num; i >= 1; i--) {
+          resultado = resultado * i;
+        }
+        return resultado;
+      }
+    }
+
+
+
+
+
+    let num = prompt("Intro numero factorial: ");
+    resultado = factorial(num);
+    document.write("El factorial de " + num + " es " + resultado);
+
+
+
+  </script>
+</body>
+
+</html>

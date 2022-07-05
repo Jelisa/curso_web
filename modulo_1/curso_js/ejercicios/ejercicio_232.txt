@@ -1,0 +1,17 @@
+!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Documento con errores javascript a corregir">
+        <meta name="author" content="OBP">
+        <title>Documento con errores javascript</title>
+        <script>document.write("primer texto")</script>
+    </head>
+        <script>document.write("segundo texto")</script>    
+    <body>
+        <script>document.write("tercer texto")</script>
+    </body>
+
+        <script>document.write("cuarto texto")</script>
+</html>
+    <script>document.write("quinto texto")</script>
