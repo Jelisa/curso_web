@@ -1,0 +1,40 @@
+<!DOCTYPE html lang="es-ES">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>título de la página</title>
+        <meta name="author" content="Jelisa Iglesias">
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- <script src="jss/"></script> -->
+        <!-- <script> window.alert('bu!')</script> -->
+        <script>
+            var laborables = ["lunes","martes","miercoles", "jueves", "viernes"]
+            var trimestre = ["enero","febrero","marzo"]
+        </script>
+    </head>
+    <!-- <body onload="window.alert('bu!')"> -->
+    <body>
+        <h1>Array</h1>
+        <h2>Primer trimestre:</h2>
+        <p id="lista"></p>
+        <p id="dias">Longitud de laborables: </p>
+        <p id="meses">Longitud de meses: </p>
+        <script>
+            for (x in laborables){
+                if (x == 0){
+                    document.write(`${laborables[x]}`)
+                }
+                else{
+                    document.write(`, ${laborables[x]}`)
+                }
+            }
+            document.getElementById('dias').innerHTML += laborables.length
+            document.getElementById('meses').innerHTML += trimestre.length
+            document.getElementById('lista').innerHTML = laborables
+            for (i=10; i<255; i+=10){
+                document.write(`<p style="color: rgb(0, ${i}, 0);">Más verde!</p>`)
+            }
+        </script>
+    </body>
+</html>

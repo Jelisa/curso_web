@@ -1,0 +1,36 @@
+<!DOCTYPE html lang="es-ES">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>título de la página</title>
+        <meta name="author" content="Jelisa Iglesias">
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- <script src="jss/"></script> -->
+        <!-- <script> window.alert('bu!')</script> -->
+        <script>
+            var laborables = new Array();
+            laborables[0] = "lunes";
+            laborables[1] = "martes";
+            laborables[2] = "miercoles";
+            laborables[3] = "jueves";
+            laborables[4] = "viernes";
+            laborables[5] = "sabado";
+            laborables[6] = "domingo";
+        </script>
+    </head>
+    <!-- <body onload="window.alert('bu!')"> -->
+    <body>
+        <h1>Array</h1>
+        <h2>crear una Array</h2>
+        <script>
+            for (x in laborables){
+                document.write(`${x}<br>`)
+            }
+            for (x of laborables){
+                document.write(`${x}<br>`)
+            }
+            document.writeln(laborables[9])
+        </script>
+    </body>
+</html>
