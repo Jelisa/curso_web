@@ -1,0 +1,43 @@
+<!DOCTYPE html lang="es-ES">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>título de la página</title>
+        <meta name="author" content="Jelisa Iglesias">
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- <script src="jss/"></script> -->
+        <!-- <script> window.alert('bu!')</script> -->
+        <script>
+            var laborables = ["lunes","martes","miercoles", "jueves", "viernes"]
+            var trimestre = ["enero","febrero","marzo"]
+        </script>
+        <style>
+            body{padding: 1em 15%;}
+        </style>
+    </head>
+    <!-- <body onload="window.alert('bu!')"> -->
+    <body>
+        <h1>Subtotal Pedido</h1>
+        <script>
+            function computePrice(n,p){
+                return parseInt(n)*parseFloat(p)
+            }
+        </script>
+        <form oninput="resultado.value=computePrice(piezas.value, precio_camisas.value)">
+
+            <label for="piezas">Camisas</label>
+            <input type="number" id="piezas" value="2"> *
+            <label for="precio_camisas">Precio</label>
+            <input type="number" id="precio_camisas" value="2"> = 
+            <output name="resultado" for="piezas precio_camisas"></output>
+        </form>
+        <!-- <div onclick="reloadDocument()" class="but">reload</div>  
+        <div onclick="replaceDocument()" class="but">replace</div> 
+        <div onclick="hrefDocument()" class="but">chang via href</div> 
+        <div onclick="pesadezAbsoluta()" class="but">Muahahah!</div>  -->
+
+        <p id="pista", style="color:rgb(136, 127, 255)"></p>
+        
+    </body>
+</html>

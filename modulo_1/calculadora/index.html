@@ -7,28 +7,29 @@
         <meta name="viewport" content="viewport-fit=cover, width=device-width, initialscale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="shortcut icon" href="imagenes/icono.png">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="calculator.js"></script>
+        <script src="jss/calculator.js"></script>
     </head>
     <body>
         <div class="cuerpo_calculadora">
-            <div class="screen "> 0 </div>
-            <div class="calc_button one_of_four line_begining"> <button onclick=""> 1 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> 2 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> 3 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> + </button> </div>
-            <div class="calc_button one_of_four line_begining"> <button onclick=""> 4 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> 5 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> 6 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> - </button> </div>
-            <div class="calc_button one_of_four line_begining"> <button onclick=""> 7 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> 8 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> 9 </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> * </button> </div>
-            <div class="calc_button three_of_four line_begining"> <button onclick=""> 0 </button> </div>
-            <div class="calc_button one_of_four">/</div>
-            <div class="calc_button two_of_four line_begining"> <button onclick=""> AC </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> . </button> </div>
-            <div class="calc_button one_of_four"> <button onclick=""> = </button> </div>
+            <div class="screen " id="results"> </div>
+            <div class="screen" id="results"> </div>
+            <div class="calc_button one_of_four line_begining"  onclick="add('1')"> 1  </div>
+            <div class="calc_button one_of_four" onclick="add('2')">  2 </div>
+            <div class="calc_button one_of_four" onclick="add('3')">  3 </div>
+            <div onclick="add('+')" class="calc_button one_of_four">  + </div>
+            <div class="calc_button one_of_four line_begining" onclick="add('4')"> 4 </div>
+            <div class="calc_button one_of_four" onclick="add('5')"> 5 </div>
+            <div class="calc_button one_of_four" onclick="add('6')"> 6 </div>
+            <div class="calc_button one_of_four" onclick="add('-')"> - </div>
+            <div class="calc_button one_of_four line_begining" onclick="add('7')"> 7 </div>
+            <div class="calc_button one_of_four" onclick="add('8')"> 8  </div>
+            <div class="calc_button one_of_four" onclick="add('9')"> 9  </div>
+            <div class="calc_button one_of_four" onclick="add('*')"> * </div>
+            <div class="calc_button three_of_four line_begining" onclick="add('0')"> 0  </div>
+            <div class="calc_button one_of_four" onclick="add('/')"> / </div>
+            <div class="calc_button two_of_four line_begining" onclick="resetResults()">  AC  </div>
+            <div class="calc_button one_of_four" onclick="add('.')"> . </div>
+            <div class="calc_button one_of_four" onclick="computeResults()"> = </div>
         </div> 
     </body>
 </html>
