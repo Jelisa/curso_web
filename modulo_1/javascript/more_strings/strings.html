@@ -1,0 +1,36 @@
+<!DOCTYPE html lang="es-ES">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>título de la página</title>
+        <meta name="author" content="Jelisa Iglesias">
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script>
+            var laborables = ["lunes","martes","miercoles", "jueves", "viernes"]
+            var trimestre = ["enero","febrero","marzo"]
+        </script>
+    </head>
+    <!-- <body onload="window.alert('bu!')"> -->
+    <body>
+        <h1>Array 2nd part</h1>
+        <script>
+            var cadena =" Texto con espacio anterior y posterior "
+            var cadena2 ="Hola universo"
+            document.write("cadena sin trim: '"+cadena + "'<br>")
+            document.write("longitud de la cadena sin trim: "+cadena.length + "<br>")
+            document.write("cadena sin trim: '"+cadena.trim() + "'<br>")
+            document.write("longitud de la cadena sin trim: "+cadena.trim().length + "<br>")
+            document.write("longitud de la cadena sin trim: "+cadena.trimLeft().length + "<br>")
+            document.write("cadena despues de trim: '"+cadena + "'<br>")
+            document.write("cadena2 usada para los siguientes ejemplos: "+cadena2 + "<br>")
+            document.write("startswith hola: "+cadena2.startsWith("hola") + "<br>")
+            document.write("startswith Hola: "+cadena2.startsWith("Hola") + "<br>")
+            document.write("slice: "+cadena2.slice(0,2) + "<br>")
+            document.write("indexOf: "+cadena2.indexOf("o") + "<br>")
+            document.write("lastIndexOf: "+cadena2.lastIndexOf("o") + "<br>")
+
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html lang="es-ES">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>título de la página</title>
+        <meta name="author" content="Jelisa Iglesias">
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- <script src="jss/"></script> -->
+        <!-- <script> window.alert('bu!')</script> -->
+        <script>
+            // var laborables = ["lunes","martes","miercoles", "jueves", "viernes"]
+            // var trimestre = ["enero","febrero","marzo"]
+            function applyTrim(trimToDo){
+                var cadena3 = document.getElementById('cadena1').innerHTML ;
+                var trimmed = "blop";
+                if (trimToDo == "trim"){
+                    return `cadena después del ${trimToDo}: '${cadena3.trim()}'"`;
+                } else if (trimToDo == "trimLeft"){
+                    return `cadena después de aplicar ${trimToDo}: '${cadena3.trimLeft()}'`;
+                } else if (trimToDo == "trimRight"){
+                    return `cadena después de aplicar ${trimToDo}: '${cadena3.trimRight()}'`;
+                }
+                else{
+                    return "Selecciona un trim a probar porfa.";
+                }
+            }
+            function tryFunction(stringToCheck, functionToTry){
+                var cadena3 = document.getElementById('cadena1').innerHTML ;
+                if (functionToTry in ["slice", "includes"] ){
+                    document.getElementById("campoOpcional").style.visibility = "visible";
+                }
+                else{
+                    document.getElementById("campoOpcional").style.visibility = "hidden";
+                }
+                if (functionToTry == "startsWith"){
+                    return stringToCheck, cadena3.startsWith(stringToCheck);
+                } else if (functionToTry == "endsWith"){
+                    return stringToCheck, cadena3.endsWith(stringToCheck);
+                } else if (functionToTry == "indexOf"){
+                    return stringToCheck, cadena3.indexOf(stringToCheck);
+                } else if (functionToTry == "lastIndexOf"){
+                    return stringToCheck, cadena3.lastIndexOf(stringToCheck);
+                } else if (functionToTry == "slice"){
+                    return cadena3.slice(stringToCheck);
+                } else if (functionToTry == ""){
+                    return "";
+                }
+                else {
+                    return "Shouldn't happen! You've left an unchecked option";
+                }
+            }
+        </script>
+    </head>
+    <!-- <body onload="window.alert('bu!')"> -->
+    <body>
+        <h1>Array 2nd part</h1>
+
+        <p>Cadena de texto a probar: ' <span id="cadena1"> Texto con espacio anterior y posterior </span> '</p>
+        <form action="">
+            <label for="trim_type">Selecciona un tipo de trim a probar:</label>
+            <select name="trim_type" id="trim_type" onchange="cadena_trimeada.value=applyTrim(trim_type.value)">
+                <option value=""></option>
+                <option value="trim">trim</option>
+                <option value="trimLeft">trimLeft</option>
+                <option value="trimRight">trimRight</option>
+            </select>
+            <output name="cadena_trimeada" for="trim_type" style="display: block;"><p></p></output>
+            <p></p>
+            <div>
+                <label for="expresion">Introduce una expresion a buscar en la cadena</label>
+                <input type="text" name="expresion", id="expresion">
+                Elige la comprobación que quieres hacer
+                <select name="stringFunctions" id="stringFunctions" 
+                onchange="prueba.value=tryFunction( expresion.value,
+                                                        stringFunctions.value)">
+                    <option value=""></option>
+                    <option value="startsWith">startsWith</option>
+                    <option value="endsWith">endsWith</option>
+                    <option value="indexOf">indexOf</option>
+                    <option value="lastIndexOf">lastIndexOf</option>
+                    <option value="slice">slice</option>
+                </select>
+                <input type="button" value="check" 
+                    onclick="prueba.value=tryFunction( expresion.value, stringFunctions.value)">
+                <div style="float: right; margin-right: 15%; margin-top: .5em; visibility: hidden; clear: both;"
+                    id="campoOpcional">
+                    <label for="extraField"> campo extra</label>
+                    <input type="text" name="extraField", id="extraField">
+                </div>
+            </div>
+            <div>
+                <output name="prueba" for="stringFunctions" style="clear: both;"><p></p></output>
+            </div>
+        </form>
+
+        <!-- <script>
+            var cadena =document.getElementById('cadena1').innerHTML 
+            // si en lugar de innerHTML usamos innerText no recoge los espacios en blanco.
+            var cadena2 ="Hola universo"
+            document.write("cadena sin trim: '"+cadena + "'<br>")
+            document.write("longitud de la cadena sin trim: "+cadena.length + "<br>")
+            document.write("cadena sin trim: '"+cadena.trim() + "'<br>")
+            document.write("longitud de la cadena sin trim: "+cadena.trim().length + "<br>")
+            document.write("longitud de la cadena sin trim: "+cadena.trimLeft().length + "<br>")
+            document.write("cadena despues de trim: '"+cadena + "'<br>")
+            document.write("cadena2 usada para los siguientes ejemplos: "+cadena2 + "<br>")
+            document.write("startswith hola: "+cadena2.startsWith("hola") + "<br>")
+            document.write("startswith Hola: "+cadena2.startsWith("Hola") + "<br>")
+            
+        </script> -->
+    </body>
+</html>
