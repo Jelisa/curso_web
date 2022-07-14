@@ -1,0 +1,43 @@
+<!DOCTYPE html lang="es-ES">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>título de la página</title>
+        <meta name="author" content="Jelisa Iglesias">
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script>
+            var hoy = new Date();
+            document.write(`Fecha actual: ${hoy} <br>`)
+            document.write(`Fecha actual día: ${hoy.getDate()} <br>`)
+            document.write(`Fecha actual año: ${hoy.getFullYear()} <br>`)
+            document.write(`Fecha actual mes: ${hoy.getMonth()} <br>`)
+            document.write(`Fecha actual mes: ${hoy.getMonth()} <br>`)
+            document.write(`Fecha actual hora: ${hoy.getHours()} <br>`)
+            document.write(`Fecha actual minutos: ${hoy.getMinutes()} <br>`)
+            document.write(`Fecha actual segundos: ${hoy.getSeconds()} <br>`)
+            document.write(`toString: ${hoy.toString()} <br>`)
+            document.write(`toDateString: ${hoy.toDateString()} <br>`)
+            document.write(`toTimeString: ${hoy.toTimeString()} <br>`)
+            document.write(`toTimeString: ${hoy.toTimeString()} <br>`)
+            var dated = new Date("2030-05-25")
+            document.write(`la fecha tambien se puede modificar dando datos a Date: ${dated} <br>`)
+            var dated2 = new Date(1987,3,2)
+            document.write(`la fecha tambien se puede modificar dando datos a Date: ${dated2} <br>`)
+            var hoy2 = new Date();
+            hoy2.setDate(hoy2.getDate()+10)
+            document.write(`Funciona el +10?: ${hoy2} <br>`)
+            document.write(`toLocaleDateString: ${hoy.toLocaleDateString()} <br>`)
+            document.write(`toLocaleString: ${hoy.toLocaleString("ja-JP")} <br>`)
+            document.write(`toLocaleTimeString: ${hoy.toLocaleTimeString()} <br>`)
+            document.write(`toLocaleTimeString: ${Math.trunc(hoy2 - hoy)/(24*60*60*1000)} <br>`)
+        
+
+
+        </script>
+    </head>
+    <body>
+        <h1>Date</h1>
+        
+    </body>
+</html>
