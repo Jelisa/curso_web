@@ -1,0 +1,61 @@
+<!DOCTYPE html lang="es-ES">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>título de la página</title>
+        <meta name="author" content="Jelisa Iglesias">
+        <link rel="shortcut icon" href="imagenes/icono.png">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- <script src="jss/"></script> -->
+        <!-- <script> window.alert('bu!')</script> -->
+    </head>
+    <!-- <body onload="window.alert('bu!')"> -->
+        <body>
+            <h1>DOM</h1>
+            <div id="especial"></div>
+        <p id="intro">Finding HTML Elements by Id</p>
+        <h2></h2>
+        <p>This example demonstrates the <b>getElementsById</b> method.</p>
+        <p id="demo"></p>
+        <!-- <div>
+            <img src="imagenes/pic_bulboff.gif" alt="bombilla" id="bombilla">
+            
+            <div>
+                <button onclick="switchOn()" id="interruptor">ON</button>
+                <button onclick="switchOff()">switch_off</button>
+            </div>
+        </div> -->
+        <div>
+            <img src="imagenes/pic_bulboff.gif" alt="bombilla" id="bombilla2">
+            <div>
+                <button onclick="change_ligth()" id="interruptor2">ON</button>
+            </div>
+            <p id="checking">H</p>
+        </div>
+        <script>
+            document.getElementById("demo").innerHTML ="HEllo world";
+            // document.getElementsByClassName
+            // function switchOn (){
+            //     document.getElementById('bombilla').src = "imagenes/pic_bulbon.gif"
+            // }
+            // function switchOff (){
+            //     document.getElementById('bombilla').src = "imagenes/pic_bulboff.gif"
+            // }
+            function change_ligth(){
+                var light_state = document.getElementById("interruptor2")
+                if ( light_state.innerHTML == "ON"){
+                    document.getElementById('bombilla2').src = "imagenes/pic_bulbon.gif";
+                    // document.getElementById("interruptor2").innerHTML = "OFF";
+                    light_state.innerHTML = "OFF";
+                }else{
+                    document.getElementById('bombilla2').src = "imagenes/pic_bulboff.gif";
+                    // document.getElementById("interruptor2").innerHTML = "ON";
+                    light_state.innerHTML = "ON"
+                }
+            }
+
+            // var laborables = ["lunes","martes","miercoles", "jueves", "viernes"]
+            // var trimestre = ["enero","febrero","marzo"]
+        </script>
+    </body>
+</html>
