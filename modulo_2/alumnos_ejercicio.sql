@@ -180,7 +180,7 @@ nacimiento y en la tercera el nombre del mes de la fecha de
 nacimiento. .*/
 /* 	• Resuelva la consulta utilizando las
 	funciones DAYNAME y MONTHNAME . .*/
-select date_format(fecha_nacimiento) as cumpleaños,
+select fecha_nacimiento as cumpleaños,
 	dayname(fecha_nacimiento) as "dia de la semana",
 	monthname(fecha_nacimiento) as "nombre del mes"
 	from alumno;
@@ -189,7 +189,7 @@ select fecha_nacimiento as cumpleaños,
 	date_format(fecha_nacimiento, "%W") as "dia de la semana",
 	date_format(fecha_nacimiento, "%M") as "nombre del mes"
 	from alumno;
-
+select date_format(fecha_nacimiento, "%d %M %Y") as "fecha de nacimiento" from alumno;
 /* 3. Devuelva un listado con dos columnas, donde aparezca en la
 primera columna la fecha de nacimiento de los alumnos y en la
 segunda columna el número de días que han pasado desde la
@@ -215,3 +215,10 @@ operaciones:*/
 select fecha_nacimiento as cumpleaños,
     floor(datediff(now(), fecha_nacimiento)/365.25) as "edad en días"
 	from alumno;
+
+select fecha_nacimiento as cumpleaños,
+    truncate(datediff(now(), fecha_nacimiento)/365.25, 0) as "edad en días"
+	from alumno;
+    
+SET lc_time_names = 'es_ES';
+show variables;

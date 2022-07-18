@@ -7,10 +7,12 @@ select nombre from piezas;
 select * from proveedor;
 
 -- Obtener el precio medio al que se nos suministran las piezas.
-select avg(precio) from compra;
+select avg(precio) from compra as media;
+select avg(precio) from compra as media group by codigo_pieza;
 
 -- Obtener los nombres de los proveedores que suministran la pieza 10.
 select id_proveedor from compra where codigo_pieza = 10;
+select nombre from proveedor where identificador = (select id_proveedor from compra where codigo_pieza = 10);
 
 -- Obtener los nombres de las piezas suministradas por el proveedor cuyo código es TGLR
 select nombre from piezas where codigo in (
@@ -29,7 +31,7 @@ insert into compra values (15, 2.19,
 
 -- Aumentar los precios en diez céntimos.
 set sql_safe_updates = 0; -- Permite hacer updates no seguros
-update compra set precio = precio + 0.1 where id_compra;
+update compra set precio = precio + 0.1;
 set sql_safe_updates = 1;
 
 /* Hacer constar en la base de datos que la empresa  “Las piezas de la calle 34, S.L.” no va a 
@@ -37,11 +39,15 @@ suministrarnos ninguna pieza (aunque la empresa sí va a seguir constando en nue
 update compra set precio = null 
 where id_proveedor = (select identificador from proveedor where nombre = "Las piezas de la calle 34, S.L.");
 
+delete from compra where id_proveedor = (select identificador from proveedor where nombre = "Las piezas de la calle 34, S.L.");
+
 /* Hacer constar en la base de datos que la empresa  “Recambios y piezas, S.L.” ya no va a 
 suministrarnos Motor MLT. compra*/
 update compra set precio = null where codigo_pieza = (select codigo from piezas where nombre = "Motor MLT") and
-id_proveedor = (select identificador from proveedor where nombre = "Recambios y piezas, S.L.");
+	id_proveedor = (select identificador from proveedor where nombre = "Recambios y piezas, S.L.");
 
+delete from compra where codigo_pieza = (select codigo from piezas where nombre = "Motor MLT") and
+	id_proveedor = (select identificador from proveedor where nombre = "Recambios y piezas, S.L.");
 /* Obtener un listado con el nombre de los proveedores y la cantidad de 
 piezas que nos suministra cada uno.*/
 select count(compra.codigo_pieza) as "# piezas suministradas", proveedor.nombre from compra 

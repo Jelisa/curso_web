@@ -31,3 +31,12 @@ create table compra(
 );
 
 show tables;
+
+
+
+
+
+
+
+
+
