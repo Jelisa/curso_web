@@ -9,10 +9,10 @@ function pedirNombre() {
     return nombre
 }
 
-class miembro{
-    constructor(nombre, apellido){
-        this.nombre = pedirNombre();
-        this.apellido = pedirApellido();
+class persona{
+    constructor(){
+        this.nombre = "";
+        this.apellido = "";
     }
     get fullName(){
         return this.generateFullname();
@@ -34,7 +34,10 @@ function introducirMiembros() {
     let n = cuantosMiembrosHay();
     let listado_miembros = [];
     for (let i = 0; i < n; i++) {
-        listado_miembros.push([pedirApellido().concat(", ", pedirNombre())])
+        let member = new persona();
+        member.nombre = pedirNombre();
+        member.apellido = pedirApellido();
+        listado_miembros.push(member);
     }
     return listado_miembros;
 }
@@ -47,9 +50,9 @@ function escribirOutput(listaAMostrar) {
         output = "No se ha introducido ningún miembro";
     }
     else {
-        output = listaAMostrar[0];
+        output = listaAMostrar[0].fullName;
         for (let i = 1; i < listaAMostrar.length; ++i) {
-            output = output.concat("<br>" + listaAMostrar[i]);
+            output += "<br>" + listaAMostrar[i].fullName;
         }
     }
     return output
