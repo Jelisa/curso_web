@@ -52,6 +52,7 @@ select nombre from departamento order by nombre desc;
 -- 15. Lista los apellidos y el nombre de todos los empleados, ordenados de forma alfabética 
 -- 		tendiendo en cuenta en primer lugar sus apellidos y luego su nombre. 
 select apellido1, apellido2, nombre from empleado order by apellido1, apellido2, nombre;
+select apellido1, apellido2, nombre from empleado order by 1, 2, 3;
 
 -- 16. Devuelve una lista con el nombre y el presupuesto, de los 3 departamentos que tienen mayor presupuesto. 
 select nombre, presupuesto from departamento order by presupuesto desc limit 3;
@@ -60,7 +61,7 @@ select nombre, presupuesto from departamento order by presupuesto desc limit 3;
 select nombre, presupuesto from departamento order by presupuesto asc limit 3;
 
 -- 18. Devuelve una lista con el nombre y el gasto, de los 2 departamentos que tienen mayor gasto. 
-select nombre, gastos from departamento order by gastos desc limit 3;
+select nombre, gastos from departamento order by gastos desc limit 2;
 
 -- 19. Devuelve una lista con el nombre y el gasto, de los 2 departamentos que tienen menor gasto. 
 select nombre, gastos from departamento order by gastos asc limit 3;
@@ -106,6 +107,7 @@ select nombre, gastos, presupuesto from departamento where gastos = presupuesto;
 
 -- 30. Lista todos los datos de los empleados cuyo segundo apellido sea NULL. 
 select * from empleado where apellido2 is null;
+
 
 -- 31. Lista todos los datos de los empleados cuyo segundo apellido no sea NULL. 
 select * from empleado where apellido2 is not null;
