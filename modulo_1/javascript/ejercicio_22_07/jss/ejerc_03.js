@@ -12,11 +12,11 @@ function solucionWithDate(input){
     return fechasLocales;
 }
 
-function solucionUsingSplit(input){
+function solucionUsingSplitAndReverse(input){
     let fechasLocales = [];
     for (fecha of input){
         let date = fecha[0].split("-");
-        fechasLocales.push([[date[2],date[1],date[0]].join("-")])
+        fechasLocales.push([date.reverse().join("-")])
     }
     return fechasLocales
 }
