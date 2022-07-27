@@ -24,8 +24,8 @@ Por ejemplo:
 var shoppedProducts = [];
 // Variable que contiene aquellos productos que van por unidades en lugar de por Kg.
 var unitaryProducts = ["pinya", "piña"];
-
-// var total = 0.0;
+// Variable que contiene el total de la compra.
+var total = 0.0;
 
 function addProduct(productName) {
     /*Esta función añade un producto al carro de la compra.
@@ -41,19 +41,9 @@ function addProduct(productName) {
     //Si la cantidad es correcta.
     else {
         // Se genera un objeto de la clase producto.
-        let productToAdd = new Product();
-        // Se le asigna como name el nombre recibido como parámetro.
-        productToAdd.name = productName;
-        // Se le asigna como amount la cantidad introducida.
-        productToAdd.amount = quantity;
-        // Se le asigna como precio unitario el precio extraido del documento HTML.
-        productToAdd.unitPrice = getProductPrice(document.getElementById(productName).innerHTML);
-        // Se llama a la función setSubtotal del objeto que calcula y asigna el valor del subtotal.
-        productToAdd.setSubtotal();
-        // Se añade el producto a la arrray global shopped Products.
-        shoppedProducts.push(productToAdd);
+        let productToAdd = new Product(productName, quantity, getProductPrice(document.getElementById(productName).innerHTML));
         // Se actualiza el carrito de la compra.
-        updateShoppingCart();
+        updateShoppingCart(productToAdd);
     }
     // Se pregunta si se quiere seguir comprando.
     continueShopping();
@@ -98,18 +88,12 @@ function deactivateImages(){
     }
 }
 
-function updateShoppingCart() {
+function updateShoppingCart(productToUpdate) {
     /*Función que actualiza el carrito de la compra.*/
-    //Creamos una variable total en la que se guardará el total de la compra y se inicializa a 0
-    let total = 0.0;
     //Creamos e inicializamos una variable para guardar la lista de la compra.
-    let shoppingCart = "";
-    for (element of shoppedProducts) {
-        shoppingCart += `<p>${element.toShoppingCartString()}</p>`;
-        total += element.subtotal;
-    }
-    shoppingCart += `<h2>Total Compra: ${total.toFixed(2).replaceAll(".", ",")}</h2>`;
-    document.getElementById("carrito").innerHTML = shoppingCart;
+    document.getElementById("carrito").innerHTML += `<p>${productToUpdate.toShoppingCartString()}</p>`;
+    total += productToUpdate.subtotal;
+    document.getElementById("total").innerHTML = `<h2>Total Compra: ${total.toFixed(2).replaceAll(".", ",")}</h2>`;
 }
 
 class Product {
