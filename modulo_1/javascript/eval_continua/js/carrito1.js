@@ -20,10 +20,12 @@ Por ejemplo:
  Lo importante es el cálculo, no los estilos css
  */
 
+// Variable en la que guardaremos los productos seleccionados
+var shoppedProducts = [];
 // Variable que contiene aquellos productos que van por unidades en lugar de por Kg.
 var unitaryProducts = ["pinya", "piña"];
-// Variable que contiene el total de la compra.
-var total = 0.0;
+
+// var total = 0.0;
 
 function addProduct(productName) {
     /*Esta función añade un producto al carro de la compra.
@@ -31,15 +33,27 @@ function addProduct(productName) {
     No devuelve nada.*/
     // Se le pide al usuario que introduzca una cantidad del producto seleccionado.
     let quantity = parseFloat(prompt("Qué cantidad desea comprar?"));
+    
+    //Si la cantidad no es válida se da un mensaje avisando de que el producto no será añadido.
     if (quantity == 0.0 || isNaN(quantity)) {
         alert("El producto seleccionado no se añadirá al carro de la compra porque ha introducido un 0 o un valor no válido como cantidad.")
     }
     //Si la cantidad es correcta.
     else {
-        // Se genera un objeto de la clase producto con los datos del HTML.
-        let productToAdd = new Product(productName, quantity, getProductPrice(document.getElementById(productName).innerHTML));
+        // Se genera un objeto de la clase producto.
+        let productToAdd = new Product();
+        // Se le asigna como name el nombre recibido como parámetro.
+        productToAdd.name = productName;
+        // Se le asigna como amount la cantidad introducida.
+        productToAdd.amount = quantity;
+        // Se le asigna como precio unitario el precio extraido del documento HTML.
+        productToAdd.unitPrice = getProductPrice(document.getElementById(productName).innerHTML);
+        // Se llama a la función setSubtotal del objeto que calcula y asigna el valor del subtotal.
+        productToAdd.setSubtotal();
+        // Se añade el producto a la arrray global shopped Products.
+        shoppedProducts.push(productToAdd);
         // Se actualiza el carrito de la compra.
-        updateShoppingCart(productToAdd);
+        updateShoppingCart();
     }
     // Se pregunta si se quiere seguir comprando.
     continueShopping();
@@ -51,8 +65,10 @@ function getProductPrice(string) {
     Recibe: una string con la descripción del precio en el siguiente formato: 'Nombre : precio€/unidad'
     Devuelve: Un float con el precio.     
     */
+
     // Para extraer el precio del podemos encadenar splits para obtener un string con el precio.
     let price = parseFloat(string.split(":")[1].split('€')[0].replaceAll(",", "."));
+
     // Si el precio no ha sido extraido correctamente salta una alarma y 
     // devuelve un 0 para evitar el colapso de la aplicación.
     if (isNaN(price)) {
@@ -64,20 +80,36 @@ function getProductPrice(string) {
 }
 
 function continueShopping() {
-    //Esta función pregunta al usuario si quiere finalizar la compra o no y desactiva la aplicación.
+    /*Esta función pregunta al usuario si quiere finalizar la compra o no y desactiva la aplicación.*/
     let exit = confirm("¿Quiere finalizar su compra?");
+
+    // si el usuario quiere salir
     if (exit) {
+        // le avisamos de que ha finalizado
         alert("Compra Finalizada");
-        (function () {for (x of document.getElementsByClassName("imatges")) 
-            x.onclick = function () { }});
+        deactivateImages();
     }
 }
 
-function updateShoppingCart(productToUpdate) {
-    //Función que actualiza el carrito de la compra.
-    document.getElementById("carrito").innerHTML += `<p>${productToUpdate.toShoppingCartString()}</p>`;
-    total += productToUpdate.subtotal;
-    document.getElementById("total").innerHTML = `<h2>Total Compra: ${total.toFixed(2).replaceAll(".", ",")}</h2>`;
+function deactivateImages(){
+    /* Esta función elimina la funcionalidad de las imagenes de añadir elementos al carrito de la compra */
+    for (x of document.getElementsByClassName("imatges")) {
+        x.onclick = function () { };
+    }
+}
+
+function updateShoppingCart() {
+    /*Función que actualiza el carrito de la compra.*/
+    //Creamos una variable total en la que se guardará el total de la compra y se inicializa a 0
+    let total = 0.0;
+    //Creamos e inicializamos una variable para guardar la lista de la compra.
+    let shoppingCart = "";
+    for (element of shoppedProducts) {
+        shoppingCart += `<p>${element.toShoppingCartString()}</p>`;
+        total += element.subtotal;
+    }
+    shoppingCart += `<h2>Total Compra: ${total.toFixed(2).replaceAll(".", ",")}</h2>`;
+    document.getElementById("carrito").innerHTML = shoppingCart;
 }
 
 class Product {
@@ -86,12 +118,18 @@ class Product {
         this.name = name;
         this.unitPrice = unitPrice;
         this.amount = amount;
-        this.subtotal = this.unitPrice * this.amount;
+        this.subtotal = this.computeSubtotal();
         this.units = this.setUnits();
     }
+    computeSubtotal(){
+        // Función para calcular el precio total del producto 
+        return this.unitPrice * this.amount;
+    }
     setUnits() {
-        //Esta función establece las unidades del producto.
+        /*Esta función establece las unidades del producto.*/
+        //Si se trata de un producto que va por unidades se usa ud como unidad
         if (this.name in unitaryProducts) this.units = "ud";
+        //Para el resto de productos se usa Kg como unidad.
         else this.units = "Kg";
     }
     floatToStringWithComa(number) {
@@ -100,6 +138,7 @@ class Product {
     }
     toShoppingCartString() {
         // función que convierte el objeto en una string con el formato necesario para el carrito de la compra
+        this.setUnits();
         return `
             ${this.name} ${this.amount} ${this.units} x ${this.floatToStringWithComa(this.unitPrice)}€/${this.units} = 
             ${this.floatToStringWithComa(this.subtotal)}€

@@ -28,3 +28,14 @@ p {
 .imatges {
     width: 100%;
 }
+.shopping_list_element{
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.delete_button{
+    background-color: rgba(193, 5, 5, 0.792);
+    color: black;
+    border: 0px;
+    border-radius: .1rem;
+}

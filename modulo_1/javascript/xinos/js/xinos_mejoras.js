@@ -1,18 +1,16 @@
 const numJugadores = 2;
 const numMonedas = 3;
 const maxMonedas = numJugadores * numMonedas;
+var partidasJugadas = 0;
 var playerName = "";
-
-function primeraPartida() {
-    /* Función que se ejecuta solo en la primera partida.*/
-    playerName = prompt("Por favor, escriba su nombre"); // pedimos el nombre al usuario.
-    document.getElementById("instrucciones").style.display = "none"; // esconde las instrucciones.
-    document.getElementById("tablero").style.display = "block"; // muestra las imagenes para la selección.
-    inicioJuego() // empieza el juego;
-}
 
 function inicioJuego(){
     /* Función para iniciar el juego */
+    if (partidasJugadas == 0){
+        playerName = prompt("Por favor, escriba su nombre"); // pedimos el nombre al usuario.
+        document.getElementById("instrucciones").style.display = "none"; // esconde las instrucciones.
+        document.getElementById("tablero").style.display = "block"; // muestra las imagenes para la selección.        
+    }
     document.getElementById("elegir").innerHTML = `${playerName}, elija su opción:`;
     // Borrado de los posibles resultados anteriores y reseteo del tablero tras acabar una partida.
     document.getElementById("ganador").innerHTML = "";
