@@ -1,6 +1,6 @@
 .container{
     margin: 0 auto;
-    width: 1000px;
+    width: 1200px;
     /* height: 200px;
     background-color: rgb(178, 111, 240); */
 }
@@ -59,3 +59,17 @@ p{
     transform: translateY(4px);
 }
 
+.scoreboard{
+    width: 7rem;
+    height: 7rem;
+    border: .01rem dashed grey;   
+    margin: 0;
+}
+
+#jugador{
+    float: left;
+}
+
+#maquina{
+    float: right;
+}

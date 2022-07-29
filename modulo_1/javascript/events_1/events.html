@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events 1</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="divBoto">
+            <button onclick="document.getElementById('resultado').innerHTML = Date()">Ejemplo de onclick : Fecha y hora</button>
+        </div>
+
+        <p ondblclick="this.innerHTML = 'Has hecho doble click'";>Ejemplo de ondblclick: Haz doble click en el párrafo</p>
+
+        <p onmousemove="this.innerHTML = 'Has pasado el ratón por encima'">Ejemplo de onmousemove : Pasa el ratón por encima</p>
+
+         <p onmouseover="this.innerHTML = 'Has pasado el ratón por encima'"
+             onmouseout="this.innerHTML = 'Y lo has quitado'">Ejemplo de onmouseover y onmouseout : Pásalo aquí también</p>
+
+        <p id="resultado"></p>
+
+    </div>
+
+    <script src="js/events.js"></script>
+</body>
+
+</html>

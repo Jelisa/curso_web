@@ -24,7 +24,6 @@ Por ejemplo:
 var unitaryProducts = ["pinya", "piña"];
 // Variable que contiene el total de la compra.
 // var total = 0.0;
-
 var shoppedProducts = [];
 
 function addProduct(productName) {

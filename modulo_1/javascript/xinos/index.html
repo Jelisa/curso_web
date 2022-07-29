@@ -12,14 +12,16 @@
 
 <body>
     <div class="container">
+        <div class="scoreboard" id="jugador"></div>
         <h1>Juego de los Xinos</h1>
+        <div class="scoreboard" id="maquina"></div>
         <p id="instrucciones">
             Es un juego de azar que consiste en intentar adivinar el número total de monedas que varios jugadores (al
             menos dos) guardan en su mano cerrada. Se utilizan tres monedas por jugador y se pueden sacar 0, 1, 2 o
             3 monedas. Gana quien acierta el total de monedas.
         </p>
         <div class="centrar">
-            <button  onclick="primeraPartida()" class="button" id="partida">Iniciar el Juego</button>
+            <button  onclick="inicioJuego()" class="button" id="partida">Iniciar el Juego</button>
         </div>
         
         <div id="tablero">
@@ -36,7 +38,7 @@
     </div>
     
 
-    <script src="js/xinos.js"></script>
+    <script src="js/xinos_mejoras.js"></script>
 </body>
 
 </html>

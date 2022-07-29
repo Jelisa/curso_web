@@ -22,19 +22,25 @@ function jugar(monedasUsuario) {
     /* Una función para implementar el juego de los xinos en sí.
     Entrada: monedasUsuario un int.
     */
-    let jugadaUsuario = prompt(`Has elejido ${monedasUsuario} monedas. Has ahora tu jugada introduciendo un número.`);  // pedir la apuesta al usuario
-    let monedasPc = calculAleatori(0, numMonedas); // genera la selección de la máquina de forma aleatoria.
-    let jugadaPC = calculAleatori(monedasPc, monedasPc + numMonedas); // genera la apuesta de la máquina de forma aleatoria.
-    let totalMonedasJugadas = monedasPc + monedasUsuario;
-    // si la apuesta del ordenador es como la del usuario genera una nueva apuesta para el Pc.
-    while (jugadaPC == jugadaUsuario) {
-        jugadaPC = calculAleatori(monedasPc, monedasPc + numMonedas);
-    }
-
+   let monedasPc = calculAleatori(0, numMonedas); // genera la selección de la máquina de forma aleatoria.
+   let totalMonedasJugadas = monedasPc + monedasUsuario;
+   let jugadaPC = calculAleatori(monedasPc, monedasPc + numMonedas); // genera la apuesta de la máquina de forma aleatoria.
+   let jugadaUsuario;
+   console.log(1, partidasJugadas, partidasJugadas%2)
+   if (partidasJugadas%2==0 || partidasJugadas == 0){
+       jugadaUsuario = prompt(`Has elejido ${monedasUsuario} monedas. Has ahora tu jugada introduciendo un número.`);  // pedir la apuesta al usuario
+       // si la apuesta del ordenador es como la del usuario genera una nueva apuesta para el Pc.
+       while (jugadaPC == jugadaUsuario) {
+           jugadaPC = calculAleatori(monedasPc, monedasPc + numMonedas);
+       }
+   }
+   else{
+        do {jugadaUsuario = prompt(`Has elejido ${monedasUsuario} monedas y la máquina ha apostado a que había ${jugadaPC}. Has ahora tu jugada introduciendo un número diferente al de la máquina.`)} while (jugadaUsuario == jugadaPC);
+   }
     // esconde el contenedor de las imagenes para evitar seguir jugando sin reiniciar el juego.
     document.getElementsByClassName("imagenes")[0].style.display = "none"; 
-
     // genera el mensaje resumen de las jugadas.
+    document.getElementById("elegir").innerHTML = `${playerName}, aquí tienes un resumen de la partida:`;
     let mensajeFinal = `
         <p> El total de monedas es ${totalMonedasJugadas}</p>
         <p> ${playerName} tenías ${monedasUsuario} monedas y jugaste a que había ${jugadaUsuario} monedas.</p>
@@ -55,6 +61,8 @@ function jugar(monedasUsuario) {
     // Actualiza el boton de inicio de partida a volver a jugar.
     document.getElementById("partida").innerHTML = "Nueva Partida";
     document.getElementById("partida").onclick = function () {inicioJuego()};
+    partidasJugadas++;
+
 }
 
 function calculAleatori(min, max) {

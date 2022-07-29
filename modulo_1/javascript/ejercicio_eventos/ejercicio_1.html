@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 1 Necesitas una página web con dos bloques div. El primer bloque contiene el texto "Pasa por aqui" y el segundo "Efectos del movimiento" con un argumento id = "efecto" . Cuando el ratón pase por el primer bloque se llamará a la función color que cambia el fondo del segundo bloque a color verde (backgroundColor green") -->
+<!-- 2 Crea un script para que se active cuando la página se haya cargado completamente (evento load de window). Una vez cargada la página el script asignará un evento al bñpque de manera que al entrar el ratón su fondo pase a rojo y al salir vuelva al blanco.
+El script se colocará en la sección head. de la página. -->
+<!-- 3 En esta página tienes dos bloques div a modo de botones, como ves en este código HTML de abajo. Debes escribir una única función Javascript (llamada pulsar) para manejar los eventos click de ambos botones. Cuando pulses con el ratón en cualquier botón deberá aparecer una ventana alert indicando el id del botón donde se ha pulsado. -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function addBackgroundColorChange(){
+            let element = document.getElementById("cuadro");
+            element.onmouseenter = function () {changeBackgroundColor(element.id, "red")};
+            element.onmouseleave =function () {changeBackgroundColor(element.id, "white");}
+        }
+    </script>
+</head>
+<body onload="addBackgroundColorChange()">
+    <h1>Ejercicio 1</h1>
+    <div class="division" onmouseenter="changeBackgroundColor('efecto', 'green')">Pasa por aquí</div>
+    <div class="division" id="efecto">Efectos del movimiento</div>
+    <h1>Ejercicio 2</h1>
+    <div id="cuadro">
+        Cuadro que cambia al entrar el ratón
+    </div>
+    <h1>Ejercicio 3</h1>
+    <div id="boton2" class="boton" onclick="botonPulsado(2)">Pulsar aquí</div>
+    <div id="boton1" class="boton" onclick="botonPulsado(1)">Pulsar aquí</div>
+    <h1>Ejercicio 4</h1>
+
+    <script src="js/events1.js"></script>
+</body>
+</html>
