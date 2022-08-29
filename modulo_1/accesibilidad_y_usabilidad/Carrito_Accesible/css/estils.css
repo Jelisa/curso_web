@@ -1,0 +1,53 @@
+#main-title {
+    color: #ccc ;
+    font-size: 5em;
+    text-align: center;
+    font-weight: normal;
+}
+
+#main-image {
+    width: 100%;
+    margin-top: -40px; 
+}
+
+#instrucciones{
+    font-size: 1rem;
+    text-align: left;
+}
+
+h2 {
+    color: #000;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+p, figcaption {
+    color: #000;
+    font-size: 2em;
+    text-align: center;
+}
+
+figure, ul, li{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    list-style-type: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.fruites {
+    display: flex;
+    justify-content: space-around;
+}
+
+.imatges {
+    width: 100%;
+}
