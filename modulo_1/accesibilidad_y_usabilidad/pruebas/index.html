@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proves accessibilitat</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+    <h1>Proves accessibilitat</h1>
+    <h2 tabindex="0">Enllaços</h2>
+    <p tabindex="0">Enllaç a <a href="#">Google</a></p>
+    <p tabindex="0">Enllaç a <a href="#">Microsoft</a></p>
+
+    <h2 tabindex="0"> Butons</h2>
+    <button aria-label="Si fas click aniràs a google.com">Fes click aquí</button>
+    <form action="">
+        <fieldset role="form">
+            <legend>Formulario</legend>
+            <label for="nom">Nom</label><input type="text" name="nom" id="nom" placeholder="Nom">
+            <br>
+            <label for="felicitat">Com estàs?</label>
+            <select name="felicitat" id="felicitat">
+                <option value="be">Bé</option>
+                <option value="regular">Regular</option>
+                <option value="mal">Mal</option>
+            </select>
+            <br>
+        </fieldset>
+        <fieldset role="radiogroup">
+            <legend>Tens calor?</legend>
+            <input type="radio" name="pregunta" id="si" value="si">
+            <label for="si">Si</label>
+            <input type="radio" name="pregunta" id="no" value="no">
+            <label for="no">No</label>
+        </fieldset>
+    </form>
+    <a href="#" target="_blank" rel="noopener noreferrer" class="frutas" contenido="manzanaRoja 3.5">
+        <img src="imagenes/aranja.png" alt="" class="img_fruta">
+    </a>
+    <a href="#" target="_blank" rel="noopener noreferrer" class="frutas" contenido="platanos 4.5">
+        <img src="imagenes/kiwi.png" alt="" class="img_fruta">
+    </a>
+
+    <!-- <a href="#" target="_blank" rel="noopener noreferrer">
+        <img src="imagenes/aranja.png" alt="" class="img_fruta" aria-labelledby="pomelo">
+        <p id="pomelo">The pomelo, Citrus maxima, is the largest citrus fruit from the family Rutaceae and the principal ancestor of the grapefruit. It is a natural, non-hybrid, citrus fruit, native to Southeast Asia</p>
+    </a> -->
+    <script>
+        const frutas = document.querySelectorAll(".frutas");
+        console.log(frutas[0].getAttribute("contenido"));
+    </script>
+</body>
+
+</html>
