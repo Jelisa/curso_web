@@ -1,3 +1,70 @@
+#navigation_bar{
+    display: flexbox;
+    flex-wrap: wrap;
+}
+
+.frutas{
+    /* display: flex; */
+    margin: .5em;
+    text-decoration: none;
+    border: .1em solid gray;
+    border-radius: .5em;
+    width: calc(40% - .1em);
+}
+
 .img_frutas{
-    width: 20%;
+    position: relative;
+    display: flex;
+}
+
+.navigation_box{
+    list-style-type: none;
+    display: inline;
+    /* margin: .75em; */
+    padding: .25em;
+    background-color: antiquewhite;
+    border-radius: .5em;
+    width: fit-content;
+}
+
+.right{
+    text-align: right;
+    justify-self: right;
+    margin-right: 0;
+    border: 10px solid aquamarine;
+}
+
+/* .navegacion:hover{
+    border: .2em solid blue;
+    border-radius: .5em;
+    transform: scale(1.5);
+} */
+
+a:hover{
+    border: 2px solid blue;
+    border-radius: .5em;
+    padding: .25em;
+}
+
+*:focus{
+    padding: .25em;
+    border: 5px solid blue;
+
+}
+
+fieldset{
+    margin: .75em 0em;
+}
+
+h1, nav, footer{
+    text-align: center;
+}
+
+p, form{
+    margin: .5em 1em;
+}
+
+section{
+    width: 90%;
+    margin: auto;
 }
