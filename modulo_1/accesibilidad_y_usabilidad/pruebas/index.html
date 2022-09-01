@@ -29,19 +29,20 @@
             <p tabindex="4">Tengo tabindex 4</p>
             <p tabindex="2">Tengo tabindex 2</p>
             <p tabindex="3">Tengo tabindex 3</p>
-            <li class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></li>
+            <div class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></div>
         </section>
         <section id="enlaces">
             <h2 tabindex="0">Enlaces</h2>
             <p tabindex="0">Enlace <a href="#">Google</a></p>
             <p tabindex="0">Enlace a <a href="#">Microsoft</a></p>
             <p tabindex="0" lang="en">English text to try</p>
-            <li class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></li>
+            <div class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></div>
         </section>
         <section id="botones">
             <h2 tabindex="0"> Butons</h2>
             <button aria-label="Si fas click aniràs a google.com">Fes click aquí</button>
-            <li class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></li>
+            <br>
+            <div class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></div>
         </section>
         <section id="formularios">
             <h2 tabindex="0">Formularios</h2>
@@ -68,23 +69,28 @@
                 <input type="submit" value="enviar datos" id="botonFormulario">
                 <!-- <button type="submit" value="Enviar datos">Hola</button> -->
             </form>
-            <li class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></li>
+            <!-- <br> -->
+            <div class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></div>
         </section>
         <section id="items">
             <h2 tabindex="0">Items</h2>
-            <p tabindex="0">Frutas</p>
-            <a href="#" rel="noopener noreferrer" class="frutas" contenido="Manzana roja-3.5">
-                <img src="imagenes/aranja.png" alt="" class="img_fruta">
-            </a>
-            <a href="#" rel="noopener noreferrer" class="frutas" contenido="Platanos-4.5">
-                <img src="imagenes/kiwi.png" alt="" class="img_fruta">
-            </a>
-        
-            <!-- <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="imagenes/aranja.png" alt="" class="img_fruta" aria-labelledby="pomelo">
-                <p id="pomelo">The pomelo, Citrus maxima, is the largest citrus fruit from the family Rutaceae and the principal ancestor of the grapefruit. It is a natural, non-hybrid, citrus fruit, native to Southeast Asia</p>
-            </a> -->
-            <li class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></li>
+            <h3 tabindex="0">Frutas</h3>
+            <div class="contenedor_frutas">
+                <div tabindex="0" class="frutas" contenido="Manzana roja-3.5">
+                    <img src="imagenes/aranja.png" alt="manzana roja a 3.5€" class="img_fruta">
+                </div>
+                <div tabindex="0" class="frutas" contenido="kiwi-4.5">
+                    <img src="imagenes/kiwi.png" alt="kiwi a 4.5€" class="img_fruta">
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="fruta2" tabindex="0">
+                    <img src="imagenes/aranja.png" alt="" class="img_fruta" aria-labelledby="pomelo">
+                    <p id="pomelo">The pomelo, Citrus maxima, is the largest citrus fruit from the family Rutaceae and the principal ancestor of the grapefruit. It is a natural, non-hybrid, citrus fruit, native to Southeast Asia</p>
+                </div>
+                <div class="navigation_box right"><a href="#navigation_bar">Volver arriba</a></div>
+            </div>
         </section>
     </main>
     <footer>Jelisa Iglesias</footer>

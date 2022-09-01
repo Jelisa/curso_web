@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Casa Batlló</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+<!--
+Se trata de conseguir una página acabada como la muestra, aplicando pautas de accesibilidad.
+Para ello habrá que :
+
+1) Estructurar correctamente con etiquetas semánticas.
+2) Hay que poder navegar con el tabulador por el menú, los títulos, los parráfos, las imágenes y el formulario.
+    Imagina que no tienes el mouse.
+3) Se incluyen los textos y las imágenes.
+4) No te olvides el formulario. No hace falta implementar Javascript, pero si lo haces es un plus.
+5) Otro plus es incluir un enlace para volver al menú desde el final de cada sección.
+6) Testear como accede a cada parte con el tabulador y el Screen Reader. Si no tienes auriculares hazlos sin sonido.
+7) En el footer debería estar tu nombre
+
+
+    Nota : La foto de Gaudí debe considerarse decorativa.
+-->
+<header>
+    <h1 id="inicio" tabindex="0">La casa Batlló</h1>
+    <h2 tabindex="0">Una obra maestra del modernismo</h2>
+</header>
+<body>
+    <!-- El menú de navegación está separado del header porque sinó el screenReader lo lee dos veces:
+        una al cargar la página y leer el header y otra al hacer tab para navegar por la página.-->
+    <nav id="navigation_bar" tabindex=0 aria-label="menu de navegación">
+        <ul>
+            <li class="navigation_box"><a href="#arquitecto">Antoni Gaudí</a></li>
+            <li class="navigation_box"><a href="#edificio">El edificio</a></li>
+            <li class="navigation_box"><a href="#imagenes">Imágenes</a></li>
+            <li class="navigation_box"><a href="#movimiento">El Modernismo</a></li>
+            <li class="navigation_box"><a href="#opinion">Su opinión</a></li>
+        </ul>
+    </nav>
+    <main>       
+        <section id="arquitecto">
+            <h2 tabindex="0">Antoni Gaudí</h2>
+            <img src="img/foto_Gaudi_400x510.jpg" alt="">
+            <p tabindex="0">Gaudí fue un arquitecto con un sentido innato de la geometría y el volumen, así como una gran capacidad
+                imaginativa que le permitía proyectar mentalmente la mayoría de sus obras antes de pasarlas a planos. De
+                hecho, pocas veces realizaba planos detallados de sus obras; prefería recrearlos sobre maquetas
+                tridimensionales, moldeando todos los detalles según los iba ideando mentalmente. En otras ocasiones,
+                iba improvisando sobre la marcha, dando instrucciones a sus colaboradores sobre lo que debían hacer.</p>
+            <div class="navigation_box "><a href="#navigation_bar">Volver arriba</a></div>
+        </section> 
+        <section id="edificio">
+            <h2 tabindex="0">El edificio</h2>
+            <p tabindex="0" >La Casa Batlló es un reflejo de la plenitud artística de Gaudí: pertenece a su etapa naturalista (primera
+                década del siglo XX), periodo en que el arquitecto perfecciona su estilo personal, inspirándose en las
+                formas orgánicas de la naturaleza, para lo que puso en práctica toda una serie de nuevas soluciones
+                estructurales originadas en los profundos análisis efectuados por Gaudí de la geometría reglada. A ello
+                añade el artista catalán una gran libertad creativa y una imaginativa creación ornamental: partiendo de
+                cierto barroquismo sus obras adquieren gran riqueza estructural, de formas y volúmenes desprovistos de
+                rigidez racionalista o de cualquier premisa clásica. </p>
+            <div class="navigation_box "><a href="#navigation_bar">Volver arriba</a></div>
+        </section> 
+        <section id="imagenes">
+            <h2 tabindex="0">Imágenes</h2>
+            <div class="container">
+                <img tabindex="0" class="imagen" src="img/fachada_h300.png" alt="La fachada del edificio reproduce formas naturales mediante curvas.">
+                <img tabindex="0" class="imagen" src="img/pati_interior_h300.jpg" alt="En el interior, hay un patio muy luminoso.">
+            </div>
+            <div class="container">
+                <img tabindex="0" class="imagen" src="img/vestibul_h300.jpg" alt="Por su parte, el vestíbulo de entrada es de gran elegancia.">
+                <img tabindex="0" class="imagen" src="img/salo_h300.jpg" alt="Pero quizá el espacio más destacables sea el salón, con su techo con forma de espiral, como un remolino.">
+            </div>
+            <div class="navigation_box "><a href="#navigation_bar">Volver arriba</a></div>
+        </section>
+        
+        <section id="movimiento">
+            <h2 tabindex="0">El Modernismo</h2>
+            <p tabindex="0">El modernismo rechaza el estilo poco atractivo de la arquitectura industrial de la primera mitad del
+            siglo XIX, y desarrolla nuevos conceptos arquitectónicos basados en la naturaleza, que consisten en los
+            materiales de construcción que se emplean, en las formas de los edificios y en las figuras de sus
+            fachadas. Los arquitectos y sus escultores colocan en el exterior de los edificios pájaros, mariposas,
+            hojas y flores a modo de elementos decorativos, ya sea como figuras adosadas o como adorno de la piedra
+            o cerámica. También se colocan figuras de tamaño mayor, animales fabulosos o personas, y en las cornisas
+            elementos de cerámica de color. Las ventanas y los balcones disponen de rejas de hierro forjado, que son
+            labradas artísticamente y contienen motivos inspirados en la naturaleza.</p>
+            <div class="navigation_box "><a href="#navigation_bar">Volver arriba</a></div>
+        </section>
+        <section>
+            <h2 tabindex="0">¡Su opinión es importante!</h2>
+            <form action="" onsubmit="return comprobarDatos()">
+                <fieldset role="form">
+                    <legend>Por favor, comente su opinión</legend>
+                    <p tabindex="0">Es necesario rellenar todos los campos</p>
+                    <p class="elemento_formulario">
+                        <label for="nombre">Su nombre</label>
+                        <input type="text" name="nombre" id="nombre" aria-required="true" required>
+                    </p>
+                    <p class="elemento_formulario">
+                        <label for="opinion">Su opinión</label>
+                        <input type="text" name="opinion" id="opinion" aria-required="true" required>
+                    </p>
+                    <input type="submit" value="Enviar opinión" id="botonFormulario" class="botonFormulario elemento_formulario">
+                </fieldset>
+            </form>
+            <div class="navigation_box "><a href="#navigation_bar" title="Vuelta al inicio de la página" aria-label="Vuelve al inicio de la página">Volver arriba</a></div>
+        </section> 
+    </main>
+
+    <footer>
+        Jelisa Iglesias
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

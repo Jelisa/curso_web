@@ -58,14 +58,7 @@ footer{
     width: calc(20% - 25px);
 }
 
-.col:hover{
-    background-color: grey;
-    border: .2em solid black;
-    border-radius: .5em;
-    transform: scale(1.25);
-}
-
-.col:focus{
+.col:hover, .col:focus{
     background-color: grey;
     border: .2em solid black;
     border-radius: .5em;
