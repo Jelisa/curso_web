@@ -24,61 +24,61 @@
         </div>
 
         <ul class="fruites">
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('pomelo')">
                 <figure>
                     <img class="imatges" src="img/aranja.png" alt="">                
                     <figcaption id="pomelo">Pomelo : 2,50€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('kiwi')">
                 <figure>
                     <img class="imatges" src="img/kiwi.png" alt="">
                     <figcaption id="kiwi">Kiwi : 4,20€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('limon')">
                 <figure>
                     <img class="imatges" src="img/llimones.png" alt="">
                     <figcaption id="limon">Limón : 1,20€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('pinya')">
                 <figure>
                     <img class="imatges" src="img/pinya.png" alt="">
                     <figcaption id="pinya">Piña : 2,8€/ud</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('sandia')">
                 <figure>
                     <img class="imatges" src="img/sindria.png" alt="">
                     <figcaption id="sandia">Sandía: 1,20€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('manzanaRoja')">
                 <figure>
                     <img class="imatges" src="img/poma_vermella.png" alt="">                
                     <figcaption id="manzanaRoja">Manzana roja: 1,80€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('cerezas')">
                 <figure>
                     <img class="imatges" src="img/cireres.png" alt="">
                     <figcaption id="cerezas">Cerezas : 6,40€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('melocoton')">
                 <figure>
                     <img class="imatges" src="img/pressec.png" alt="">
                     <figcaption id="melocoton">Melocotón : 3,40€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('manzanaVerde')">
                 <figure>
                     <img class="imatges" src="img/poma_verda.png" alt="">
                     <figcaption id="manzanaVerde">Manzana verde: 2,20€/ud</figcaption>
                 </figure>
             </li>
-            <li class="col" tabindex="0">
+            <li class="col fruits_button" tabindex="0" onclick="addProduct('melon')">
                 <figure>
                     <img class="imatges" src="img/melo.png" alt="">
                     <figcaption id="melon">Melón: 1,90€/kg</figcaption>
@@ -98,7 +98,7 @@
                 <legend tabindex="0">Datos de envío</legend>
                 <p>
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" require aria-required="true">
+                    <input type="text" id="nombre" name="nombre"  aria-required="true">
                 </p>
                 <p>
                     <label for="apellido">Apellidos</label>
@@ -122,7 +122,7 @@
                 </p>
                 <p>
                     <label for="cp">Código postal</label>
-                    <input type="text" id="cp" name="cp" aria-required="true" maxlength="5">
+                    <input type="text" id="cp" name="cp"  aria-required="true" maxlength="5">
                 </p>
                 <p>
                     <label for="email">Correo electrónico</label>
@@ -172,7 +172,7 @@
             </fieldset>
         </form>
     </div>
-    <!-- <script src="js/carrito.js"></script> -->
+    <script src="js/carrito.js"></script>
     <footer>Jelisa Iglesias</footer>
 </body>
 
