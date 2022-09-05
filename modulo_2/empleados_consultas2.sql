@@ -1,5 +1,10 @@
 use empleados;
 
+/* Genera la columna de gastos, que se genera en los ejercicios anteriores pero no en la creación
+de la base de datos*/
+-- alter table departamento add gastos double;
+-- update departamento set gastos = round(presupuesto * RAND() * rand()*11) where gastos is null and codigo <=6; 
+
 -- INNER JOIN
 
 /* 1. 	Devuelve un listado con los empleados y los datos de los departamentos donde trabaja cada uno.*/
@@ -76,6 +81,13 @@ select * from (select e.*, d.nombre as nombre_departamento, d.presupuesto from e
 				union
 				select e.*, d.nombre as nombre_departamento, d.presupuesto  from empleado e 
 				right join departamento d on e.codigo_departamento = d.codigo) a
+    order by nombre_departamento;
+
+select e.*, d.nombre as nombre_departamento, d.presupuesto from empleado e 
+				left join departamento d on e.codigo_departamento = d.codigo
+				union
+				select e.*, d.nombre as nombre_departamento, d.presupuesto  from empleado e 
+				right join departamento d on e.codigo_departamento = d.codigo
     order by nombre_departamento;
 
 /* 5. 	Devuelve un listado con los empleados que no tienen ningún departamento asociado y los departamentos que 
