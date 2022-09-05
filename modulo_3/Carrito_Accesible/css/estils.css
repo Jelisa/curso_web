@@ -70,6 +70,13 @@ footer{
     width: 90%;
 }
 
+.delete_button{
+    background-color: rgba(193, 5, 5, 0.792);
+    color: black;
+    border: 0px;
+    border-radius: .1rem;
+}
+
 .fruites {
     display: flex;
     justify-content: space-around;
@@ -81,6 +88,10 @@ footer{
     width: 100%;
 }
 
+.shopping_list_element{
+    font-size: 1.25rem;
+    text-align: center;
+}
 .valoracion{
     margin: .25em 5em;
     padding-left: .5em;

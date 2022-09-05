@@ -23,12 +23,12 @@ Por ejemplo:
 /* Funcionalidad del carrito de la compra */
 
 // Variable que contiene aquellos productos que van por unidades en lugar de por Kg.
-var unitaryProducts = ["pinya", "piña"];
+var unitaryProducts = ["pinya", "piña", "manzana verde"];
 // Variable que contiene el total de la compra.
 // var total = 0.0;
 var shoppedProducts = [];
 
-function addProduct(productName) {
+function addProduct(productId) {
     /*Esta función añade un producto al carro de la compra.
     Recibe: el nombre de un producto.
     No devuelve nada.*/
@@ -39,13 +39,19 @@ function addProduct(productName) {
     }
     //Si la cantidad es correcta.
     else {
+        let productDescription = document.getElementById(productId).innerHTML;
         // Se genera un objeto de la clase producto con los datos del HTML.
         //Se actualiza el carrito de la compra.
-        shoppedProducts.push(new Product(productName, quantity, getProductPrice(document.getElementById(productName).innerHTML)))
+        shoppedProducts.push(new Product(getProductName(productDescription), quantity, getProductPrice(productDescription)))
         updateShoppingCart();
     }
     // Se pregunta si se quiere seguir comprando.
     continueShopping();
+}
+
+function getProductName(string){
+    /*Una función para extraer el nombre del producto de la descripción */
+    return string.split(":")[0].trim()
 }
 
 function getProductPrice(string) {
@@ -75,8 +81,8 @@ function continueShopping() {
 
 function removeShoppingOptions() {
     /* Esta función elimina la funcionalidad de las imagenes de añadir elementos al carrito de la compra y de los botones de borrar elementos */
-    for (let x of document.getElementsByClassName("imatges")) x.onclick = function () { };
-    for (i in document.getElementsByClassName("delete_button")) buttonsToDelete[i].onclick = function () { };
+    for (let x of document.getElementsByClassName("fruits_button")) x.onclick = function () { };
+    for (let x of document.getElementsByClassName("delete_button")) x.innerHTML="";
 }
 
 function updateShoppingCart() {
@@ -105,7 +111,8 @@ class Product {
         this.unitPrice = unitPrice;
         this.amount = amount;
         this.subtotal = this.unitPrice * this.amount;
-        if (this.name in unitaryProducts) this.units = "ud";
+        // console.log("test 1", `'${this.name.toLowerCase()}', ${unitaryProducts}`, this.name.toLowerCase() in unitaryProducts)
+        if (this.name.toLowerCase() in unitaryProducts) this.units = "ud";
         else this.units = "Kg";
     }
     floatToStringWithComa(number) {
