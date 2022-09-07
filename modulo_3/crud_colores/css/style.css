@@ -1,0 +1,24 @@
+.container{
+    margin: 0 auto;
+    width: 80%;
+    font-size: 1.2em;
+    text-align: center;
+    display: grid;
+}
+
+.filas{
+    /* border: 1px solid lightseagreen; */
+    border-radius: .5em;
+    padding: 5px;
+    margin-top: .5em;
+}
+
+#left{
+    grid-column: 1/2;
+    border: 1px solid gray;
+}
+
+#right{
+    grid-column: 2/2;
+    border: 1px solid gray;
+ }
