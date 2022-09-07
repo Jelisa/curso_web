@@ -1,3 +1,22 @@
+a{
+    display: inline;
+    /* border: .1em dashed black; */
+    border-radius: .5em;
+    color: blue;
+    font-weight: bold;
+    background-color: white;
+    margin-right: .25 em;
+    padding: .2em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.boton_edicion{
+    width: 1em;
+    height: auto;
+    background-color: none;
+}
+
 .container{
     margin: 0 auto;
     width: 80%;
