@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+    margin: 2em auto;
+}
+
+footer{
+    text-align: center;
+    margin-top: 5em;
+}
+
+label{
+    font-size: 1.25em;
+    /* color: blue; */
+}
+
+legend{
+    text-align: left;
+}
+
+.container{
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+}
