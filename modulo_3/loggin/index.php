@@ -23,9 +23,11 @@
     <h1>Loggin</h1>
     <div class="container">
         <form action="php/login.php" method="post">
-        <!-- <form action="" > -->
             <fieldset>
                 <legend>Loggin</legend>
+                <?php if ($_GET): ?>
+                    <p>Usuario o contraseña incorrectos</p>
+                <?php endif; ?>
                 <p>
                     <label for="user">Usuario</label>
                     <input type="text" id="user" name="user">
