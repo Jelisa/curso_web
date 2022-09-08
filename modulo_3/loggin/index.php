@@ -24,7 +24,7 @@
     <div class="container">
         <form action="php/login.php" method="post">
             <fieldset>
-                <legend>Loggin</legend>
+                <legend>Login</legend>
                 <?php if ($_GET): ?>
                     <p>Usuario o contraseña incorrectos</p>
                 <?php endif; ?>

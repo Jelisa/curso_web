@@ -32,7 +32,7 @@
         switch ($confirmation["results"]){
             case 0:
                 echo "0<br>";
-                header("location: ../index.php?incorrect_credentials=");
+                header("location: ../index.php?0");
                 break;
             case 1:
                 echo "1<br>";
