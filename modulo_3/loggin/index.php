@@ -4,17 +4,9 @@
 // // $initial_loggin = True;
 // // $remember_password = False;
 // // $new_user = False;
-if ($_POST){
-    var_dump($_POST);
-    if (array_key_exists("login", $_POST)){
-        echo "A";
-        // echo $_POST['login'];
-    }
-    else if (array_key_exists('register',$_POST)){
-        echo "b";
-        // echo $_POST['register'];
-    }
-}
+// if ($_POST){
+//     var_dump($_POST);
+// }
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +22,7 @@ if ($_POST){
 <body>
     <h1>Loggin</h1>
     <div class="container">
-        <form action="" method="post">
+        <form action="php/login.php" method="post">
         <!-- <form action="" > -->
             <fieldset>
                 <legend>Loggin</legend>
@@ -44,7 +36,9 @@ if ($_POST){
                 </p>
                 <p><a href="#">Recordar Contraseña</a></p>
                 <button  type="submit" name="login">Conectarse</button>
-                <button type="submit" name="register">Darse de alta</button>
+                <form action="php/alta.php" method="post">
+                    <button type="submit" name="register">Darse de alta</button>
+                </form>
             </fieldset>
         </form>
     </div>

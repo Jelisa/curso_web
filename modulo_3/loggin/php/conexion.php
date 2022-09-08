@@ -1,7 +1,7 @@
 <?php
 
 $servername = "localhost";
-$dbname = "crud_colores";
+$dbname = "login";
 $user = "root";
 $pass = "";
 
