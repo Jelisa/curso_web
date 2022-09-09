@@ -1,13 +1,3 @@
-<?php
-// include_once("php/conexion.php");
-// //variables to keep track of what's happening
-// // $initial_loggin = True;
-// // $remember_password = False;
-// // $new_user = False;
-// if ($_POST){
-//     var_dump($_POST);
-// }
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -25,8 +15,11 @@
         <form action="php/login.php" method="post">
             <fieldset>
                 <legend>Login</legend>
-                <?php if ($_GET): ?>
-                    <p>Usuario o contraseña incorrectos</p>
+                <?php if (array_key_exists('0', $_GET)): ?>
+                    <p class="warning">Usuario o contraseña vacíos.</p>
+                <?php endif; ?>
+                <?php if (array_key_exists('1', $_GET)): ?>
+                    <p class="warning">Usuario o contraseña incorrectos</p>
                 <?php endif; ?>
                 <p>
                     <label for="user">Usuario</label>
@@ -36,7 +29,7 @@
                     <label for="password">Contraseña</label>
                     <input type="text" id="user" name="password">
                 </p>
-                <p><a href="#">Recordar Contraseña</a></p>
+                <p><a href="php/remind_password.php">Recordar Contraseña</a></p>
                 <button  type="submit" name="login">Conectarse</button>
                 <form action="php/alta.php" method="post">
                     <button type="submit" name="register">Darse de alta</button>

@@ -12,27 +12,25 @@
         include_once("conexion.php");
         $user_name_given = $_POST["user"];
         $user_pass_given = $_POST["password"];
+
+        if (!$user_name_given or !$user_pass_given){
+            header("location: ../index.php?0");
+            die();
+        }
         
         $sql_query = "select count(*) as results from users where user_name = '$user_name_given' and user_pass = '$user_pass_given'";
-        // print( $sql_query);    
         $user_query = $pdoConnection->prepare($sql_query);
-        // echo "<br>3";
         $user_query->execute();
-        // echo "<br>4";
 
         $confirmation = $user_query->fetch();
 
-        // echo "<br>i";
-
-        // var_dump($confirmation);
-        
         $pdoConnection = null;
         echo "try ".$confirmation['results']."<br>";
         
         switch ($confirmation["results"]){
             case 0:
                 echo "0<br>";
-                header("location: ../index.php?0");
+                header("location: ../index.php?1");
                 break;
             case 1:
                 echo "1<br>";

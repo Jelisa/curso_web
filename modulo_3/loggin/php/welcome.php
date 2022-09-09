@@ -9,6 +9,9 @@
 </head>
 <body>
     <h1>Welcome <?php echo $_GET['user']?>!</h1>
-
+    <br>
+    <br>
+    <br>
+    <p><a href="../index.php" title="Volver a la pantalla de entrada">Login</a></p>
 </body>
 </html>
