@@ -1,0 +1,38 @@
+h1{
+    text-align: center;
+    margin: 2em auto;
+}
+
+footer{
+    text-align: center;
+    margin-top: 5em;
+}
+
+input[type=button]{
+    margin-top: 2em;
+}
+
+label{
+    font-size: 1.25em;
+    /* color: blue; */
+}
+
+legend{
+    text-align: left;
+}
+
+.container{
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+}
+
+.select_operand{
+    margin: 1em;
+    display: inline;
+}
+
+.warning{
+    color: red;
+    font-weight: bold;
+}

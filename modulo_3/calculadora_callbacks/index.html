@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks-Calculadora</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora</h1>
+        <p id="warning"></p>
+        <h2 id="resultado">0.00</h2>
+        <form action="" method="post">
+            <p>
+                <label for="value1">Valor 1</label>
+                <input type="number" name="value1" id="value1">
+            </p>
+            <p>
+                <label for="value2">Valor 2</label>
+                <input type="number" name="value2" id="value2">
+            </p>
+            <fieldset>
+                <legend>Operación</legend>
+                <div class="select_operand"><input type="radio" name="operacion" id="suma" value="suma"><label for="suma">+</label></div>
+                <div class="select_operand"><input type="radio" name="operacion" id="resta" value="resta"><label for="resta">-</label></div>
+                <div class="select_operand"><input type="radio" name="operacion" id="multiplicacion" value="multiplicacion"><label for="multiplicacion">*</label></div>
+                <div class="select_operand"><input type="radio" name="operacion" id="division" value="division"><label for="division">/</label></div>
+            </fieldset>
+            <input type="button" value="Calcular" onclick="calcular()">
+        </form>
+    </div>
+    <script src="js/scripts.js"></script>
+</body>
+<footer>
+    <p>Jelisa Iglesias</p>
+</footer>
+</html>
