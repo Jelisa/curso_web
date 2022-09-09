@@ -1,3 +1,7 @@
+body {
+    font-size: 1.5em;
+}
+
 h1{
     text-align: center;
     margin: 2em auto;
@@ -32,7 +36,7 @@ legend{
     display: inline;
 }
 
-.warning{
+#warning{
     color: red;
     font-weight: bold;
 }
