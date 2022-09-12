@@ -20,8 +20,8 @@ drop procedure if exists variables;
 delimiter $$
 create procedure variables()
 begin
-declare dato int default 0;
-declare nombre varchar(5);
-declare si boolean;
-
+	declare dato int default 0;
+	declare nombre varchar(5);
+	declare si boolean;
+	set@x = (select numero from t);
 end$$
