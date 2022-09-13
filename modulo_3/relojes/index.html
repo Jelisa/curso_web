@@ -12,20 +12,23 @@
 </head>
 <body>
 
+    <h2>Reloj simple</h2>
     <div class="container">
         <p class="linea_relojes" id="reloj1">00:00:00</p>
         <p class="linea_botones">
             <button class="activate boton" tabindex="0" onclick="startReloj1()">Activar</button>
             <button class="stop boton" tabindex="0" onclick="stopReloj1()">Parar</button>
         </p>
-        </div>
+    </div>
+    <h2>Reloj con formateo </h2>
     <div class="container">
         <p class="linea_relojes" id="reloj2">00H:00M:00S</p>
         <p class="linea_botones">
             <button class="activate boton"  tabindex="0" onclick="functionReloj2('start')">Activar</button>
             <button class="stop boton" tabindex="0" onclick="functionReloj2('stop')">Parar</button>
         </p>
-        </div>
+    </div>
+    <h2>Reloj con alarma </h2>
     <div class="container">
         <p class="linea_relojes" id="reloj3">00:00:00</p>
         <p id="alarm"></p>
@@ -33,20 +36,20 @@
             <button class="activate boton" id="inicioReloj3" tabindex="0">Activar</button>
             <button class="stop boton" id="stopReloj3" tabindex="0">Parar</button>
             <!-- <div class="program boton" id="reloj3" tabindex="0">Programar</div> -->
+            <button class="program boton" id="programarReloj3">Programar</button>
         </p>
         <form action="" class="alarma">
-            <button class="program boton" id="programarReloj3" >Programar</button>
             <p class="formulario">
                 <label for="hora">Hora</label>
-                <input type="number" name="hora" id="hora" max="23" min="0">
+                <input type="number" name="hora" id="hora" max="23" min="0" value="0">
             </p>
             <p class="formulario">
-                <label for="minuto">Minutos</label>
-                <input type="number" name="minuto" id="minuto" max="59" min="0">
+                <label for="minutos">Minutos</label>
+                <input type="number" name="minutos" id="minutos" max="59" min="0" value="0">
             </p>
             <p class="formulario">
                 <label for="segundos">Segundos</label>
-                <input type="number" name="segundos" id="segundos" max="59" min="0">
+                <input type="number" name="segundos" id="segundos" max="59" min="0" value="0">
             </p>
         </form>
     </div>

@@ -3,10 +3,16 @@ footer{
     margin-top: 5em;
     font-size: 0.90em;
 }
+
+h2{
+    text-align: center;
+    margin-bottom: 0em;
+}
+
 .boton{
     display: inline-flex;
     margin: 0em .5em;
-    padding: .25em;
+    padding: .4em;
     border: .1em solid black;
     border-radius: .5em;
     font-weight: bold;
@@ -15,7 +21,9 @@ footer{
 
 .container{
     text-align: center;
-    margin: 3em auto;
+    margin: 1em auto 3em auto;
+    /* margin-bottom: 3em; */
+    padding: 1em;
     border: 1px solid black;
     width: fit-content;
 }
