@@ -16,20 +16,21 @@ function getData(){
             compute(x,y,multiplicacion,printResult);
             break;
         case "division":
-            if (y==0.0){
-                printError(0.0, printResult);
-            }
-            else{
-                compute(x,y,division,printResult);
-            }
+            compute(x,y,division,printResult, division_error);
             break;
     }
-    
 }
 
-function compute(x, y, operationCB, printResultsCB){
+function compute(x, y, operationCB, printResultsCB, errorHandling){
+    //errorHandlign tiene que devolver verdadero o falso.
     resetWarning();
-    printResultsCB(operationCB(x,y));
+    let correct;
+    if (errorHandling !== undefined){
+        correct = errorHandling(x,y);
+    }
+    if (correct){
+        printResultsCB(operationCB(x,y));
+    }
 }
 
 function printResult(total){
@@ -37,6 +38,7 @@ function printResult(total){
 }
 
 function printError(total, printResultsCB){
+    console.log('here',2, total);
     document.getElementById('warning').innerHTML = "No está permitida la division por 0.";
     printResultsCB(total)
 }
@@ -60,4 +62,14 @@ function multiplicacion(x, y){
 
 function division(x, y){
     return x/y;
+}
+
+function division_error(n1, n2){
+    if (n2 == 0){
+        printError(0.0, printResult);
+        return false;
+    }
+    else{
+        return true;
+    }
 }
