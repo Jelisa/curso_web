@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relojes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <p class="linea_relojes" id="reloj1">00:00:00</p>
+        <p class="linea_botones">
+            <button class="activate boton" tabindex="0" onclick="startReloj1()">Activar</button>
+            <button class="stop boton" tabindex="0" onclick="stopReloj1()">Parar</button>
+        </p>
+        </div>
+    <div class="container">
+        <p class="linea_relojes" id="reloj2">00H:00M:00S</p>
+        <p class="linea_botones">
+            <button class="activate boton"  tabindex="0" onclick="functionReloj2('start')">Activar</button>
+            <button class="stop boton" tabindex="0" onclick="functionReloj2('stop')">Parar</button>
+        </p>
+        </div>
+    <div class="container">
+        <p class="linea_relojes" id="reloj3">00:00:00</p>
+        <p id="alarm"></p>
+        <p class="linea_botones">
+            <button class="activate boton" id="inicioReloj3" tabindex="0">Activar</button>
+            <button class="stop boton" id="stopReloj3" tabindex="0">Parar</button>
+            <!-- <div class="program boton" id="reloj3" tabindex="0">Programar</div> -->
+        </p>
+        <form action="" class="alarma">
+            <button class="program boton" id="programarReloj3" >Programar</button>
+            <p class="formulario">
+                <label for="hora">Hora</label>
+                <input type="number" name="hora" id="hora" max="23" min="0">
+            </p>
+            <p class="formulario">
+                <label for="minuto">Minutos</label>
+                <input type="number" name="minuto" id="minuto" max="59" min="0">
+            </p>
+            <p class="formulario">
+                <label for="segundos">Segundos</label>
+                <input type="number" name="segundos" id="segundos" max="59" min="0">
+            </p>
+        </form>
+    </div>
+</body>
+<footer>
+    <p>Jelisa Iglesias</p>
+</footer>
+<script src="js/script.js"></script>
+</html>
