@@ -22,7 +22,11 @@ function getData(){
 }
 
 function compute(x, y, operationCB, printResultsCB, errorHandling){
-    //errorHandlign tiene que devolver verdadero o falso.
+    /**
+     * x, y son dos valores que se pasaran a la función de la operationCB
+     * printResultsCB una funcion para mostrar el resultado de la operación.
+     * errorHandlign es una funcion que recibe dos parámetros y tiene que devolver verdadero o falso.
+     */
     resetWarning();
     let correct;
     if (errorHandling !== undefined){
@@ -37,10 +41,9 @@ function printResult(total){
     document.getElementById('resultado').innerHTML = total.toFixed(2);
 }
 
-function printError(total, printResultsCB){
-    console.log('here',2, total);
-    document.getElementById('warning').innerHTML = "No está permitida la division por 0.";
-    printResultsCB(total)
+function printError(total, printResultsCB, errorMessage){
+    document.getElementById('warning').innerHTML = errorMessage;
+    printResultsCB(total);
 }
 
 function resetWarning(){
@@ -65,8 +68,9 @@ function division(x, y){
 }
 
 function division_error(n1, n2){
+    // Recive dos parámetros aunque solo necesite uno por igualdad con otras posibles funciones de comprovación de errores.
     if (n2 == 0){
-        printError(0.0, printResult);
+        printError(0.0, printResult, "No está permitida la division por 0.");
         return false;
     }
     else{
