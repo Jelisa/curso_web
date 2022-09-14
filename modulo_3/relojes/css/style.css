@@ -21,10 +21,10 @@ h2{
 
 .container{
     text-align: center;
-    margin: 1em auto 3em auto;
-    /* margin-bottom: 3em; */
+    margin: .5em auto 3em auto;
     padding: 1em;
     border: 1px solid black;
+    border-radius: 1em;
     width: fit-content;
 }
 .formulario{
@@ -49,10 +49,20 @@ h2{
 
 .stop{
     color: aliceblue;
-    background-color: red;
+    background-color: #d80808;
 }
 
 .program{
-    color: darkslateblue;
-    background-color: rgb(108, 189, 196);
+    color: #2b15b3;
+    background-color: rgb(134, 231, 240);
+}
+
+#alarm{
+    color: #091bcc;
+    font-weight: bold;
+    border-radius: 1em;
+    text-align: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
