@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Carrito de la compra</title>
-  
+    
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/estils.css">
 </head>
 
@@ -24,61 +27,61 @@
         </div>
 
         <ul class="fruites">
-            <li class="col fruits_button" tabindex="0" title="pomelo">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="pomelo">
                 <figure>
                     <img class="imatges" src="img/aranja.png" alt="">                
                     <figcaption id="pomelo">Pomelo : 2,50€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="kiwi">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="kiwi">
                 <figure>
                     <img class="imatges" src="img/kiwi.png" alt="">
                     <figcaption id="kiwi">Kiwi : 4,20€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="limon">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="limon">
                 <figure>
                     <img class="imatges" src="img/llimones.png" alt="">
                     <figcaption id="limon">Limón : 1,20€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="pinya">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="pinya">
                 <figure>
                     <img class="imatges" src="img/pinya.png" alt="">
                     <figcaption id="pinya">Piña : 2,8€/ud</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="sandia">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="sandia">
                 <figure>
                     <img class="imatges" src="img/sindria.png" alt="">
                     <figcaption id="sandia">Sandía: 1,20€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="manzanaRoja">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="manzanaRoja">
                 <figure>
                     <img class="imatges" src="img/poma_vermella.png" alt="">                
                     <figcaption id="manzanaRoja">Manzana roja: 1,80€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="cerezas">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="cerezas">
                 <figure>
                     <img class="imatges" src="img/cireres.png" alt="">
                     <figcaption id="cerezas">Cerezas : 6,40€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="melocoton">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="melocoton">
                 <figure>
                     <img class="imatges" src="img/pressec.png" alt="">
                     <figcaption id="melocoton">Melocotón : 3,40€/kg</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="manzanaVerde">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="manzanaVerde">
                 <figure>
                     <img class="imatges" src="img/poma_verda.png" alt="">
                     <figcaption id="manzanaVerde">Manzana verde: 2,20€/ud</figcaption>
                 </figure>
             </li>
-            <li class="col fruits_button" tabindex="0" title="melon">
+            <li class="col col-xl-2 fruits_button" tabindex="0" title="melon" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <figure>
                     <img class="imatges" src="img/melo.png" alt="">
                     <figcaption id="melon">Melón: 1,90€/kg</figcaption>
@@ -92,6 +95,27 @@
             <h2 id="total"></h2>
 
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
 
         <form action="" onsubmit="return comprobarFormulario()">
             <fieldset>
@@ -172,6 +196,8 @@
             </fieldset>
         </form>
     </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="js/carrito.js"></script>
     <footer>Jelisa Iglesias</footer>
 </body>

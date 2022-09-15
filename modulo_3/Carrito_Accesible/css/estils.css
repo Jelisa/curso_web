@@ -42,6 +42,7 @@ figure{
 ul, li{
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 
 footer{
@@ -49,14 +50,14 @@ footer{
     margin-top: 2em;
 }
 
-.col{
+/* .col{
     border: .1em solid grey ;
     border-radius: .5em;
     list-style-type: none;
     margin: .75em .2em;
     padding: .15em;
     width: calc(20% - 25px);
-}
+} */
 
 .col:hover, .col:focus{
     background-color: grey;
