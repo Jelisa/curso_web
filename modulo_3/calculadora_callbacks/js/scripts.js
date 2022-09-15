@@ -1,5 +1,9 @@
-function getData(){
 
+computeButton = document.querySelector("#botonCalculo");
+
+computeButton.addEventListener("click", getData);
+
+function getData(){
     // Read the form data
     let operacion = document.querySelector("input[name=operacion]:checked").value;
     let x = parseFloat(document.querySelector("input[name=value1]").value);
@@ -28,11 +32,14 @@ function compute(x, y, operationCB, printResultsCB, errorHandling){
      * errorHandlign es una funcion que recibe dos parámetros y tiene que devolver verdadero o falso.
      */
     resetWarning();
-    let correct;
+    let correctOperation;
     if (errorHandling !== undefined){
-        correct = errorHandling(x,y);
+        correctOperation = errorHandling(x,y);
     }
-    if (correct){
+    else{
+        correctOperation = true; 
+    }
+    if (correctOperation){
         printResultsCB(operationCB(x,y));
     }
 }
