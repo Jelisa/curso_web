@@ -28,7 +28,16 @@ var unitaryProducts = ["pinya", "piña", "manzana verde"];
 // var total = 0.0;
 var shoppedProducts = [];
 
+
+//Recogemos todas las imágenes que actuan de botón y les añadimos la funcionalidad usando addEventListener.
+let productosDisponibles = document.querySelectorAll(".fruits_button");
+
+for (let producto of productosDisponibles){
+    producto.addEventListener("click",() => {addProduct(producto.title)})
+}
+
 function addProduct(productId) {
+    console.log("here", productId)
     /*Esta función añade un producto al carro de la compra.
     Recibe: el nombre de un producto.
     No devuelve nada.*/
