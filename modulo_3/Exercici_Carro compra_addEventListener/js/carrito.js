@@ -30,6 +30,10 @@ window.addEventListener(
                 }
             )
         }
+        const parentContainer = document.querySelector("h1").parentNode;
+        console.log(parentContainer)
+        const loginButton = document.createElement("pato")
+        parentContainer.insertBefore(loginButton, document.querySelector("h1"))
     }
 )
 
@@ -37,7 +41,7 @@ function checkAmountInput(valueToCheck, checkType, errorMsg = "default") {
     let isCorrect = true;
     switch (errorMsg) {
         case "modification":
-            errorMsg = "La cantidad no se modificará, ya que ha introducido una cantidad incorrecta.\n Para Eliminar un producto use el botón de la derecha.";
+            errorMsg = "La cantidad no se modificará, ya que ha introducido una cantidad incorrecta.";
             break;
         case "intNeeded":
             errorMsg = "El producto seleccionado se vende por unidades, la cantidad introducida no es válida.";
@@ -57,6 +61,12 @@ function checkAmountInput(valueToCheck, checkType, errorMsg = "default") {
             if (!Number.isInteger(valueToCheck)) {
                 alert(errorMsg);
                 isCorrect = false;
+            }
+            break;
+        case "isNumber":
+            if (valueToCheck < 0.0 || isNaN(valueToCheck)) {
+                alert(errorMsg);
+                isCorrect = false
             }
             break;
     }
@@ -81,10 +91,10 @@ function addProduct(productInfo) {
     if (!checkAmountInput(quantity, "isNumberBiggerThanZero")) {
         correctQuantity = false;
     }
-    if ( correctQuantity && units == "unidad" && !checkAmountInput(quantity, "isInt", "intNedded")) {
+    if (correctQuantity && units == "unidad" && !checkAmountInput(quantity, "isInt", "intNedded")) {
         correctQuantity = false;
     }
-    if (correctQuantity){
+    if (correctQuantity) {
         if (shoppedProducts.some(product => product.name == name)) {
             shoppedProducts[shoppedProducts.findIndex(product => product.name == name)].amount += quantity;
         }
@@ -101,12 +111,12 @@ function updateShoppingCart() {
     // console.log(shoppedProducts)
     //Función que actualiza el carrito de la compra.
     let shoppingcartElements = `<div>
-                                    <div id='carrito' class='row '>
-                                        <div class="col text-start">Producto</div>
-                                        <div class="col text-start">Cantidad</div>
-                                        <div class="col text-start">Precio</div>
-                                        <div class="col text-end">Total</div>
-                                        <div class="col-1 m-0"></div>
+                                    <div id='carrito' class='row'>
+                                        <div class="col text-start h4">Producto</div>
+                                        <div class="col text-start h4">Cantidad</div>
+                                        <div class="col text-start h4">Precio</div>
+                                        <div class="col text-end h4">Total</div>
+                                        <div class="col-1 h4"></div>
                                     </div>`
     let total = 0.0
     for (i in shoppedProducts) {
@@ -120,7 +130,7 @@ function updateShoppingCart() {
                                     <a href="#productos" class="btn btn-primary btn-lg">Seguir comprando</a>
                                 </div>
                                 <div class="col text-end">
-                                    <a href="php/login.html" class="btn btn-primary btn-lg" title="Acabar la compra y pagar">Realizar Compra</a>
+                                    <a href="#" class="btn btn-primary btn-lg" title="Acabar la compra y pagar">Realizar Compra</a>
                                 </div>
                             </div>`
     document.getElementById("carrito").innerHTML = shoppingcartElements;
@@ -157,26 +167,28 @@ function addFunctionModifyQuantity() {
                 let idx = e.target.getAttribute("itemId");
                 let new_amount = parseFloat(
                     prompt(
-                        `Alcutalmente tiene seleccionada la siguiente cantidad: ${shoppedProducts[idx].amount} ${shoppedProducts[idx].units}(es) de ${shoppedProducts[idx].name}\n¿Quanta quiere tener?`
+                        `Alcutalmente tiene seleccionada la siguiente cantidad: ${shoppedProducts[idx].amount} ${shoppedProducts[idx].units}(es) de ${shoppedProducts[idx].name}\n¿Quanta quiere tener?\n(Si introduce 0 se eliminará el producto)`
                     )
                 )
                 // Comprobamos que la cantidad introducida sea válida.
                 let correctInput = true;
-                if (!checkAmountInput(new_amount, "isNumberBiggerThanZero", "modification")) {
+                if (!checkAmountInput(new_amount, "isNumber", "modification")) {
                     correctInput = false;
                 }
-                // console.log('here i am', correctInput, shoppedProducts[idx].units == "unidad")
                 if (correctInput && shoppedProducts[idx].units == "unidad") {
-                    // console.log('holi', checkAmountInput(new_amount, "isInt", "intNeeded"))
                     if (!checkAmountInput(new_amount, "isInt", "intNeeded")) {
-                        console.log('here2')
                         correctInput = false;
                     }
                 }
-                console.log()
                 if (correctInput) {
-                    shoppedProducts[idx].amount = new_amount;
-                    document.querySelector(`.quantity[itemId="${idx}"]`).innerHTML = `<div class="col text-start quantity" itemId="${idx}">${new_amount.toFixed(1)} ${shoppedProducts[idx].units}(es)</div>`
+                    if (new_amount == 0) {
+                        shoppedProducts.splice(idx, 1);
+                        updateShoppingCart();
+                    }
+                    else {
+                        shoppedProducts[idx].uppdateQuantity(new_amount);
+                        updateShoppingCart();
+                    }
                 }
             }
         )
@@ -199,13 +211,18 @@ class Product {
         this.units = units;
     }
 
+    uppdateQuantity(new_amount) {
+        this.amount = new_amount;
+        this.subtotal = parseFloat(this.unitPrice) * parseFloat(this.amount);
+    }
+
     productToHTML(idx) {
         return `<div class="row carrito_item">
-            <div class="col text-start" itemId="${idx}">${this.name} </div> 
-            <div class="col text-start quantity" itemId="${idx}">${this.amount.toFixed(1)} ${this.units}(es)</div> 
-            <div class="col text-start" itemId="${idx}">${this.unitPrice}€/${this.units}</div>
-            <div class="col text-end" itemId="${idx}">${this.subtotal.toFixed(2)}€</div>
-            <div class="col-1 delete_button text-start" itemId="${idx}"> X </div>
+            <div class="col user-select-none text-start" itemId="${idx}">${this.name} </div> 
+            <div class="col user-select-none text-start quantity" itemId="${idx}">${this.amount.toFixed(1)} ${this.units}(es)</div> 
+            <div class="col user-select-none text-start" itemId="${idx}">${this.unitPrice}€/${this.units}</div>
+            <div class="col user-select-none text-end" itemId="${idx}">${this.subtotal.toFixed(2)}€</div>
+            <div class="col-1 user-select-none delete_button text-start" itemId="${idx}"> X</div>
         </div>`
     }
 }

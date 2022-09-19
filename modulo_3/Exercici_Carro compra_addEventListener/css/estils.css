@@ -35,3 +35,8 @@ p {
     border-top: 2px solid blue;
     color: blue;
 }
+
+.delete_button{
+    color: red;
+    font-weight: bold;
+}
