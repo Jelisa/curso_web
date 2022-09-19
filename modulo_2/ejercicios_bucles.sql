@@ -2,6 +2,22 @@ drop database if exists test;
 create database test;
 use test;
 
+drop procedure if exists bucle_limite;
+delimiter //
+create procedure bucle_limite (in limite int)
+begin
+	-- init
+    set @i = 1; -- lo mismo: declare i int default 1;
+    -- comp
+    while @i <= limite do
+		select @i;
+        set @i = @i +1; -- act
+	end while;
+    --
+end //
+delimiter ;
+
+call bucle_limite(3);
 
 /* Ejercicio 1: Enviar a un procedimiento un número. Mostrar todos los números pares en formato decreciente. */
 
@@ -22,18 +38,14 @@ BEGIN
 		IF  counter <= 0 THEN 
 			LEAVE  loop_label;
 		END  IF;
-		SET  counter = counter - 1;
-		IF  (counter%2 = 0) THEN
-			SET  str = CONCAT(str,',',counter);
-		ELSE
-			ITERATE  loop_label;
-		END  IF;
+		SET  counter = counter - 2;
+		SET  str = CONCAT(str,',',counter);
 	END LOOP;
 	SELECT str as "Numeros pares";
 END$$
 DELIMITER ;
 
-call LoopDemo(26);
+call LoopDemo(25);
 
 /* Ejercicio 2: Enviar a un procedimiento dos números (base, exponente). Mostrar la potencia. */
 
@@ -113,3 +125,17 @@ end//
 delimiter ;
 
 call numero_primo(23);
+
+
+drop procedure if exists do_repeat;
+delimiter $$
+create procedure do_repeat(in p1 int)
+begin
+	set @x = 0;
+    repeat
+		set @x = @x +1;
+	until @x = p1 end repeat;
+end $$
+delimiter ;
+call do_repeat(20);
+select @x;

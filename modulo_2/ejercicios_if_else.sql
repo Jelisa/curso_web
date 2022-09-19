@@ -37,7 +37,7 @@ INSERT INTO `test`.`letra` (`id`, `resto`, `letra`) VALUES ('23', '22', 'e');
  
 drop procedure if exists semaforo;
 delimiter //
-create procedure semaforo(in color varchar(5))
+create procedure semaforo(in color varchar(10))
 begin
 	if color = "rojo" then
 		select "No pasar";
@@ -115,8 +115,8 @@ drop procedure if exists ordena_tres_numeros;
 delimiter //
 create procedure ordena_tres_numeros(in n1 int, in n2 int, in n3 int)
 begin
-	if n1 > n2 and n1 > n3 then
-		if n2 > n3 then
+	if n1 >= n2 and n1 >= n3 then
+		if n2 >= n3 then
 			select concat_ws(", ", n1, n2, n3) as "numeros ordenados";
 		else
 			select concat_ws(", ", n1, n3, n2) as "numeros ordenados";
@@ -138,7 +138,7 @@ begin
 end //
 delimiter ;
  
- call ordena_tres_numeros(10,9,7);
+ call ordena_tres_numeros(9,9,9);
 
  
 /* Ejercicio 6 -> Comprobar letra DNI. Enviar a un procedimiento el número del DNI.*/
