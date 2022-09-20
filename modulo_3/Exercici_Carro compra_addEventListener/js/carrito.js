@@ -96,7 +96,9 @@ function addProduct(productInfo) {
     }
     if (correctQuantity) {
         if (shoppedProducts.some(product => product.name == name)) {
-            shoppedProducts[shoppedProducts.findIndex(product => product.name == name)].amount += quantity;
+            // Si el producto ya está seleccionado se modifica la cantidad.
+            let productToModify = shoppedProducts[shoppedProducts.findIndex(product => product.name == name)]
+            productToModify.uppdateQuantity(productToModify.amount + quantity);
         }
         else {
             // Se genera un objeto de la clase producto con los datos del HTML y se añade a la lista de productos comprados.
@@ -108,7 +110,6 @@ function addProduct(productInfo) {
 }
 
 function updateShoppingCart() {
-    // console.log(shoppedProducts)
     //Función que actualiza el carrito de la compra.
     let shoppingcartElements = `<div>
                                     <div id='carrito' class='row'>
@@ -125,18 +126,18 @@ function updateShoppingCart() {
     }
     shoppingcartElements += `<p class="total col-11 text-end">${total.toFixed(2)}€<p>
                             </div>
+                            
                             <div class="row">
                                 <div class="col text-end">
                                     <a href="#productos" class="btn btn-primary btn-lg">Seguir comprando</a>
                                 </div>
                                 <div class="col text-end">
-                                    <a href="#" class="btn btn-primary btn-lg" title="Acabar la compra y pagar">Realizar Compra</a>
+                                    <a href="php/index.php" class="btn btn-primary btn-lg" title="Acabar la compra y pagar">Realizar Compra</a>
                                 </div>
                             </div>`
     document.getElementById("carrito").innerHTML = shoppingcartElements;
     addFunctionToDeleteButtons();
     addFunctionModifyQuantity();
-    // addEndShoppingFunction();
 }
 
 function addFunctionToDeleteButtons() {
