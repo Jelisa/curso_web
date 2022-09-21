@@ -1,5 +1,4 @@
 function redirect(type){
-    console.log("hola");
     switch (type){   
         case "login":
             document.getElementById['redirection'].innerHTML = "login";
