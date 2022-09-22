@@ -32,8 +32,8 @@ main.addEventListener(
         let listaId; // Una variable para guardar los Ids de las listas a actualizar
         switch (e.target.id) {
             case "button-4": //Solución al  ejercicio 4
-                // Guardo el contador en un atributo idx en el botón para poder elegir el hijo que toca cambiar.
                 listaId = '.colores-2'
+                // Guardo el contador en un atributo idx en el botón para poder elegir el hijo que toca cambiar.
                 if (e.target.getAttribute("idx") == null || e.target.getAttribute("idx") == document.querySelector(listaId).children.length) {
                     e.target.setAttribute('idx', '1');
                     colorList(listaId, 0);
@@ -46,9 +46,21 @@ main.addEventListener(
                 break;
             case "button-3": //Solución al ejercicio 5
                 listaId = ".colores-3";
-                for (let i = 0; i < document.querySelector(listaId).children.length; i++) {
-                    setTimeout(colorList, 500*i, listaId, i)
-                }
+                // for (let i = 0; i < document.querySelector(listaId).children.length; i++) {
+                //     setTimeout(colorList, 500*i, listaId, i)
+                // }
+                let i = 0;
+                let intervalo = setInterval(
+                    ()=>{
+                        // console.log(i)
+                        if (i < document.querySelector(listaId).children.length){
+                            colorList(listaId, i++);
+                        }
+                        else{
+                            clearInterval(intervalo);
+                        }
+                    },
+                    500)
                 break;
             case "acepto": //Solución al ejercicio 6
                 const buttonToModify = e.target.parentNode.parentNode.children[7]
