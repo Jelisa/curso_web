@@ -52,7 +52,6 @@ main.addEventListener(
                 let i = 0;
                 let intervalo = setInterval(
                     ()=>{
-                        // console.log(i)
                         if (i < document.querySelector(listaId).children.length){
                             colorList(listaId, i++);
                         }
