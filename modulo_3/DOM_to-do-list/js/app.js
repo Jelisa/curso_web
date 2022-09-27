@@ -3,40 +3,29 @@ console.log('ok');
 let totalTasks = 0;
 let tasks = [];
 
-// Constant variables that store the buttons symbols.
-
-// const pendingId = "listaPendientes";
-// const ongoignId = "listaAhora";
-// const finishedId = "listaFinalizada";
+// Constants containing information derived from the HTML model.
 const formId = "mi-formulario";
 const buttonsParentClass = "opciones";
 
 
 const STATESPROPERTIES = {
-    "pending" : {"buton": ["🔽", "⏬", "❌"],
+    "pending" : {"buttonsSymbols": ["🔽", "⏬", "❌"],
+                "buttonsTarget" : ["ongoing", "finished", "delete"],
                 "class" : "div-tarea-pendiente",
                 "ID": "listaPendientes"},
-    "ongoing" : {"buton": ["🔽", "🔼", "❌"],
+    "ongoing" : {"buttonsSymbols": ["🔽", "🔼", "❌"],
+                "buttonsTarget" : ["finished", "pending", "delete"],
                 "class" : "div-tarea-ahora",
                 "ID": "listaAhora"},
-    "finished" : {"buton": ["🔼", "⏫", "❌"],
+    "finished" : {"buttonsSymbols": ["🔼", "⏫", "❌"],
+                "buttonsTarget" : ["ongoing", "pending", "delete"],
                 "class" : "div-tarea-finalizada",
                 "ID": "listaFinalizada"}
 }
 
-// console.log(STATESPROPERTIES["pending"]["buton"])
-
-const pendingState = "pending";
-const ongoingState = "ongoing";
-const finishedState = "finished";
-
 const templateToUseId = "task_template";
 
-const possibleStates = ["pending", "ongoing", "finished"]
-
-function createNewTaskFromTemplate(text) {
-
-    const state = "pending";
+function createNewTaskFromTemplate(text, state="pending") {
     const templateClone = document.getElementById(templateToUseId).content.cloneNode(true);
     const fragment = document.createDocumentFragment();
 
@@ -49,18 +38,14 @@ function createNewTaskFromTemplate(text) {
     div.setAttribute("task_id", totalTasks);
 
     let buttons = templateClone.querySelectorAll("span");
-    buttons.forEach((button, idx) => {
-        button.id = `boton_${idx}_${totalTasks}`;
-        button.textContent = STATESPROPERTIES[pendingState]["buton"][idx];
-        button.setAttribute("taskIdx", totalTasks);
-    });
+    modifyButtons(buttons, STATESPROPERTIES[state].buttonsSymbols, STATESPROPERTIES[state].buttonsTarget);
 
     let opciones = templateClone.querySelector(`.${buttonsParentClass}`);
     opciones.setAttribute("task_id", totalTasks);
     opciones.setAttribute("state", state);
 
     fragment.appendChild(templateClone);
-    document.getElementById(STATESPROPERTIES[state]["ID"]).appendChild(fragment);
+    document.getElementById(STATESPROPERTIES[state].ID).appendChild(fragment);
     tasks.push(`task_${totalTasks}`);
 }
 
@@ -75,44 +60,22 @@ main.addEventListener(
             if (formTextField.value != "") {
                 createNewTaskFromTemplate(formTextField.value);
                 totalTasks++;
-                formTextField.innerHTML = "";
+                formTextField.value = "";
             }
             else {
                 alert("Empty task");
             }
-            // console.log('here', totalTasks, tasks[totalTasks - 1])
         }
         if (e.target.tagName == "SPAN" && e.target.id.includes("boton")) {
-            let button_type = e.target.id.split("_")[1];
-            let task_id = e.target.id.split("_")[2];
-            console.log(0, e.target.parentNode.getAttribute("state"), button_type, task_id)
-            if (button_type == "2"){
-                console.log('ok', tasks, task_id);
-                const elementToRemove = document.getElementById(tasks[task_id])
-                elementToRemove.remove();
-                // console.log(elementToRemove)
-                // tasks.splice(task_id, 1)
-                console.log(tasks)
-            }
-            switch (e.target.parentNode.getAttribute("state")) {
-                case pendingState:
-                    switch (button_type) {
-                        case "0":
-                            modifyTask(tasks[task_id], e.target.parentNode.getAttribute("state"), ongoingState);
-                    }
+            let taskId =  e.target.parentNode.getAttribute("task_id");
+            let currentState = e.target.parentNode.getAttribute("state");
+            let targetState = e.target.getAttribute("targetState"); 
+            switch (targetState) {
+                case "delete":
+                    document.getElementById(tasks[taskId]).remove();
                     break;
-                case ongoingState:
-                    switch(button_type){
-                        case "0":
-                            break;
-                        case "1":
-                            modifyTask(tasks[task_id],e.target.parentNode.getAttribute("state"), pendingState)
-                            break;
-                        case "2":
-                            break;
-                    }
-                    break;
-                case finishedState:
+                default:
+                    modifyTask(tasks[taskId], currentState, targetState);
                     break;
             }
         }
@@ -125,19 +88,23 @@ function modifyTask(task, currentState, newState) {
     /**
      * 
      */
-    // console.log(1, currentState, newState);
+    const buttonsContainer = document.querySelector(`#${task}>.${buttonsParentClass}`)
     let buttons = document.querySelectorAll(`#${task}>.${buttonsParentClass}>span`);
-    modifyButtons(buttons, STATESPROPERTIES[newState]["buton"]);
+    modifyButtons(buttons, STATESPROPERTIES[newState].buttonsSymbols, STATESPROPERTIES[newState].buttonsTarget);
     moveFromTo(document.getElementById(task), currentState, newState)
-    document.querySelector(`#${task}>.${buttonsParentClass}`).setAttribute("state", newState)
+    buttonsContainer.setAttribute("state", newState)
 }
 
-function modifyButtons(oldButtonsContainer, newButtons) {
+function modifyButtons(oldButtonsContainer, newButtons, newStates) {
     /**
      * 
      */
     oldButtonsContainer.forEach(
-        (button, idx) => {button.textContent = newButtons[idx]}
+        (button, idx) => {
+            button.textContent = newButtons[idx]
+            button.setAttribute("targetState", newStates[idx]);
+            button.id = "boton_"+idx;
+        }
     )
 }
 
@@ -145,8 +112,7 @@ function moveFromTo(element, currentState, newState){
     /**
      * 
      */
-    console.log(12, STATESPROPERTIES[currentState]["class"], STATESPROPERTIES[newState]["class"])
-    const newParent = document.getElementById(STATESPROPERTIES[newState]["ID"]);
+    const newParent = document.getElementById(STATESPROPERTIES[newState].ID);
     toogleClass(element, STATESPROPERTIES[currentState]["class"], STATESPROPERTIES[newState]["class"])
     newParent.appendChild(element);
 }
