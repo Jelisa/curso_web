@@ -78,24 +78,32 @@ function createNewTaskFromTemplate(text, state="pending") {
 
 const main = document.querySelector("main");
 
+
+// Adding the functions on click via the addEventListener method.
 main.addEventListener(
     "click",
     (e) => {
-        let eventParentNode = e.target.parentNode;
+        let eventParentNode = e.target.parentNode; // lets save the parent Node to simplify reading the code
+
+        // When the user clicks the task creation button.
         if (e.target.tagName == "BUTTON" && eventParentNode.id == FORM_INFORMATION.formId) {
+            // Read the task information
             const formTextField = document.getElementById(FORM_INFORMATION.inputId);
+            // If the field isn't empty create a new task, update the number of tasks finally clean the field.
             if (formTextField.value != "") {
                 createNewTaskFromTemplate(formTextField.value);
                 totalTasks++;
                 formTextField.value = "";
             }
+            // If the field it's empty raise an alert
             else {
                 alert("Empty task");
             }
         }
+        // If the user clicks one of the tasks buttons switch the task's state or delete it.
         if (e.target.tagName == "SPAN" && e.target.id.includes("boton")) {
-            let taskId =  e.target.parentNode.getAttribute("task_id");
-            let currentState = e.target.parentNode.getAttribute("state");
+            let taskId =  eventParentNode.getAttribute("task_id");
+            let currentState = eventParentNode.getAttribute("state");
             let targetState = e.target.getAttribute("targetState"); 
             switch (targetState) {
                 case "delete":
