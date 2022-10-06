@@ -13,6 +13,35 @@ delimiter ;
 
 select fu_profesor(2017);
 
-        
-        
-        
+select profesor.nombre, profesor.apellido1, asignatura.id, curso.anyo_inicio from profesor, curso_escolar as curso, asignatura 
+	where 
+		profesor.id_profesor = asignatura.id_profesor
+		and 
+		asignatura.curso = curso.id
+        and
+        curso.anyo_inicio = 2014;
+
+select * from alumno_se_matricula_asignatura asma, persona, profesor, curso_escolar as curso, asignatura 
+	where 
+		asma.id_alumno = persona.id
+		and
+		profesor.id_profesor = asignatura.id_profesor
+		and 
+		asignatura.curso = curso.id
+		and
+		curso.anyo_inicio = 2014
+		and
+		id_asignatura in (select asignatura.id from profesor, curso_escolar as curso, asignatura 
+					where 
+						profesor.id_profesor = asignatura.id_profesor
+						and 
+						asignatura.curso = curso.id)
+			;
+            
+select profesor.nombre, profesor.apellido1, asignatura.id, curso.anyo_inicio from profesor, curso_escolar as curso, asignatura 
+	where 
+		profesor.id_profesor = asignatura.id_profesor
+		and 
+		asignatura.curso = curso.id
+        and
+        curso.anyo_inicio = 2014;
