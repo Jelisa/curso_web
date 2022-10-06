@@ -51,6 +51,17 @@ select asignatura.nombre, count(*) as matriculados
     order by matriculados desc 
     limit 1;
 
+/* No funciona.
+SELECT nombre
+FROM
+    (
+        SELECT  asignatura.nombre as nombre, COUNT(alumnos.id_asignatura) as totalCount
+		from alumno_se_matricula_asignatura as alumnos, asignatura
+		where asignatura.id = alumnos.id_asignatura
+		group by alumnos.id_asignatura 
+    ) s
+having totalCount = MAX(totalCount);*/
+
 /* 8.	Asignatura con más alumnos mujeres y cuantas son */
 select asignatura.nombre, count(*) as matriculados 
 	from alumno_se_matricula_asignatura as alumnos, asignatura, persona
@@ -199,8 +210,10 @@ begin
 end $$
 delimiter ;
 
-/* 3.	Función para obtener el profesor (nombre, apellidos y asignatura ) con más alumnos por año y sexo (serán los parámetros). Se llamará fu_profesor:
+/* 3.	Función para obtener el profesor (nombre, apellidos y asignatura ) con más alumnos 
+por año y sexo (serán los parámetros). Se llamará fu_profesor:
 La respuesta será : “El profesor nombre_profesor apellido_profesor ha tenido Y alumnas y X alumnos en XXXX”. */
+
 
 /* 4.	Crea un procedimiento para inscribir(que no matricular) alumnos, introduciendo todos los datos de la tabla “persona”. Se llamará pa_inscripcion(todos_los_datos):
 Si se introduce un nif repetido debe de avisar del error.  */
