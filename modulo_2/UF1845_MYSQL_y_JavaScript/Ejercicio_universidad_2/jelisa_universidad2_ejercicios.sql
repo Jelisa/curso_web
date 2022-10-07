@@ -222,7 +222,56 @@ Si se introduce un nif repetido debe de avisar del error.  */
 Se llamará pa_matricula(nif, asignatura, anyo_inicio)
 Si ya está matriculado de esa asignatura ese año debe avisar del error. */
 
-/* 6.	Crea una función que muestre de qué asignaturas y en que año se ha matriculado un alumno. El parámetro de entrada será el nif. La salida debe mostrar nif, nombre, apellido1, asignatura, año de inicio. 
+/* 6.	Crea una función que muestre de qué asignaturas y en que año se ha matriculado un alumno. 
+El parámetro de entrada será el nif. La salida debe mostrar nif, nombre, apellido1, asignatura, año de inicio. 
 Se llamará fu_info_matriculas_alumno. */
 
+-- Creación de una view con la información de los alumnos y sus asignaturas para ayudar en la busqueda de datos.
+create or replace view informacion_matriculaciones_alumnos 
+	as select persona.*, asma.id_asignatura, asignatura.nombre as nombre_asignatura, curso.anyo_inicio, curso.anyo_fin 
+	from 
+		persona, 
+        alumno_se_matricula_asignatura as asma, 
+        asignatura, 
+        curso_escolar as curso
+	where 
+		persona.id = asma.id_alumno
+		and 
+        asma.id_asignatura = asignatura.id
+        and 
+        asma.id_curso_escolar = curso.id;
+delimiter $$
+create function fu_info_matriculas_alumno( nifToSearch varchar(9)) returns varchar (10000)
+begin
+	-- declare resultados varchar(10000);
+	select count(*) into @num_asignaturas from informacion_matriculaciones_alumnos where nif = nifToSearch;
+	create temporary table asignaturas_matriculadas 
+		select nif, nombre, apellido1, nombre_asignatura, anyo_inicio 
+			from informacion_matriculaciones_alumnos where nif = nifToSearch;
+	alter table asignaturas_matriculadas add idx int auto_increment primary key;
+    select concat_ws(", ", nif, nombre, apellido1, nombre_asignatura, anyo_inicio)  into @resultados
+		from prueba where idx = 1;
+	if @num_aignaturas != 1 then
+		set @i = 2;
+        while @i <= @num_asignaturas do
+			select concat_ws(", ", nombre_asignatura, anyo_inicio) into @temp
+				from asignaturas_matriculadas where idx = i;
+			set @resultados = concat_ws(", ", @resultados, @temp);
+            set @i = @i + 1;
+        end while;
+	end if;
+    drop table asignaturas_matriculadas;
+    return @resultados;
+end $$
+delimiter ;
+
+select concat_ws(", ", nif, nombre, apellido1, nombre_asignatura, anyo_inicio) as matriculaciones from informacion_matriculaciones_alumnos where nif ="26902806";
+select count(*) from informacion_matriculaciones_alumnos where nif ="26902806";
+
+drop table if exists prueba;
+create temporary table prueba select nif, nombre, apellido1, nombre_asignatura, anyo_inicio  
+				from informacion_matriculaciones_alumnos where nif ="26902806";          
+alter table prueba add idx int auto_increment primary key;
+select * from prueba;
+    select concat_ws(", ", nif, nombre, apellido1, nombre_asignatura, anyo_inicio) from prueba where idx = 1;
 
