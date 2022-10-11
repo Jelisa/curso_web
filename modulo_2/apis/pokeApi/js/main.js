@@ -6,10 +6,10 @@ const CHARACTER_CONTAINER = document.getElementById("charactersContainer");
 
 // Breaking Bad API
 const BREAKING_BAD_API_ROOT_URL = "https://pokeapi.co/api/v2/";
-const BREAKIN_BAD_OBJECT = new ApiRest(BREAKING_BAD_API_ROOT_URL);
-BREAKIN_BAD_OBJECT.get("pokemon/?limit=21")
+const POKEMONS_API_OBJECT = new ApiRest(BREAKING_BAD_API_ROOT_URL);
+POKEMONS_API_OBJECT.get("pokemon/?limit=21")
     .then(result => {
-        BREAKIN_BAD_OBJECT.generatePokemonList(result.results, CHARACTER_CONTAINER);
+        POKEMONS_API_OBJECT.generatePokemonList(result.results, CHARACTER_CONTAINER);
     });
 
 BTN_BUSCAR.addEventListener("click", obtener_Personaje)
@@ -26,10 +26,9 @@ function obtener_Personaje (e){
     // Following the API documentation we can look for a name using the following string
     let endPoint = "pokemon/" + characterToLookFor.replace(" ","+") 
 	console.log("TCL: functionobtener_Personaje -> endPoint", endPoint)
-    BREAKIN_BAD_OBJECT.get( endPoint)
+    POKEMONS_API_OBJECT.get( endPoint)
         .then(result => {
-            console.log(result)
-            BREAKIN_BAD_OBJECT.showSpecificPokemon(result, CHARACTER_CONTAINER);
+            POKEMONS_API_OBJECT.showSpecificPokemon(result, CHARACTER_CONTAINER);
         });
 }
 

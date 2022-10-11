@@ -30,18 +30,20 @@ export default class ApiRest {
         for (let idx in listaPersonajes){
             objectoDOM.innerHTML += `
                 <div class="col col-sm-4">
-                    <div class="card">
+                    <div class="card mt-4">
                         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(idx)+1}.png" class="card-img-top" alt="...">
                         <div class="card-body">
                         <p class="card-title h5">${listaPersonajes[idx].name}</p>
-                        <a href="#" class="btn btn-light extraInfo" id="${listaPersonajes[idx].name}">More Information</a>
+                        <button type="button" class="btn btn-light extraInfo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            More Information
+                        </button>
                         </div>
                     </div>
                 </div>`;
         };
     }
     showSpecificPokemon(pokemon, objectoDOM){
-        console.log(3, pokemon)
+		console.log("TCL: ApiRest -> showSpecificPokemon -> pokemon", pokemon);
         const NEW_POKEMON = document.createElement("div");
         NEW_POKEMON.innerHTML = 
          `<div class="col col-sm-4">
@@ -53,6 +55,6 @@ export default class ApiRest {
                 </div>
             </div>
         </div>`;
-        objectoDOM.app
+        objectoDOM.insertAdjacentElement("afterBegin", NEW_POKEMON)
     }
 }
