@@ -44,5 +44,12 @@ export default class ApiRest {
         NEW_FRAGMENT.getElementById("wind").textContent = `Wind: ${citisCurrentWeather.wind.speed} m/s`
         CONTENT_ORIGINAL_PARENT.appendChild(NEW_FRAGMENT)
     }
-    
+
+    Forecast_Prediction(predictions, objectoDOM){
+        /** Función para poder imprimir la prediccion dle tiempo
+         * 
+         */
+        // const template = document.   
+    }
+
 }

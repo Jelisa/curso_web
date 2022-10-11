@@ -42,8 +42,14 @@ function getDataFromApi(){
                 }
                 OPENWEATHER_API_OBJECT.Current_Weather(result, CURRENT_WEATHER_CARD);
 				console.log("TCL: getDataFromApi -> result", result.coord.lon);
-                
                 let forecastEndPoint = `data/2.5/forecast?lat=${result.coord.lat}&lon=${result.coord.lon}&${API_KEY}&units=metric`;
+                OPENWEATHER_API_OBJECT.get(forecastEndPoint)
+                    .then(
+                        result => {
+                            console.log(result);
+                            Forecast_Prediction(result, FORECAST_CONTAINER);
+                        }
+                    )
                 console.log(FORECAST_CONTAINER, forecastEndPoint)
             }
         });
