@@ -12,6 +12,7 @@ const API_KEY = "APPID=6c9744b35586f6b311223250a34696cf";
 // Get the content to modify with the API Information
 const CURRENT_WEATHER_CARD = document.getElementById("currentWeather");
 const FORECAST_CONTAINER = document.getElementById("forecast");
+console.log("🚀 ~ file: main.js ~ line 15 ~ FORECAST_CONTAINER", FORECAST_CONTAINER.replaceChildren())
 
 // let endPoint = `data/2.5/weather?q=${DEFAULT_CITY},${DEFAULT_COUNTRY}&${API_KEY}&units=metric`
 
@@ -46,8 +47,8 @@ function getDataFromApi(){
                 OPENWEATHER_API_OBJECT.get(forecastEndPoint)
                     .then(
                         result => {
-                            console.log(result);
-                            Forecast_Prediction(result, FORECAST_CONTAINER);
+                            console.log(0, FORECAST_CONTAINER.hasChildNodes());
+                            OPENWEATHER_API_OBJECT.Forecast_Prediction(result, FORECAST_CONTAINER);
                         }
                     )
                 console.log(FORECAST_CONTAINER, forecastEndPoint)
