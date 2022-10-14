@@ -31,20 +31,28 @@
     </nav>
   </header>
   <main class="container">
-    <h1 >Pokemons</h1>
+    <h1>Pokemons</h1>
     <br>
     <div id="charactersContainer" class="row">
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div id="modalExtraInfo" class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <div class="modal-header text-center center align-content-center">
+            <p class="modal-title text-center  h1" id="exampleModalLabel"></p>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="container-fluid"></div>
+            <div class="container-fluid text-center align-content-center">
+              <p class="h3">Abilities</p>
+              <p id="abilities"></p>
+              <p class="h3">Types</p>
+              <p id="types"></p>
+              <p class="h3">Moves</p>
+              <p id="moves"></p>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -34,7 +34,7 @@ export default class ApiRest {
                         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(idx)+1}.png" class="card-img-top" alt="...">
                         <div class="card-body">
                         <p class="card-title h5">${listaPersonajes[idx].name}</p>
-                        <button type="button" class="btn btn-light extraInfo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" id="btn_${listaPersonajes[idx].name}" class="btn btn-light extraInfo" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             More Information
                         </button>
                         </div>
