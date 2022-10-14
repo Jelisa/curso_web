@@ -6,19 +6,11 @@ require_once "pdo_functions.php";
 
 $nombre_profesor = "John";
 $apellido_profesor = "Le Carre";
-$classe = "NODE.JS";
-$ciudad = "";
-$cumple = '0000-00-00';
-$sexo= "H";
-$id_matricula = 0;
+$classe = "criptografia";
 
 $profesor_id = checkValueExistance($pdoConnection,"id_profesor", "profesores", 'nombre', $nombre_profesor, 'apellido1', $apellido_profesor );
 
-if (!$profesor_id){
-    insertValue($pdoConnection, "profesores", 'nombre', $nombre_profesor, 'apellido1', $apellido_profesor, 'ciudad', $ciudad,
-                'fecha_nacimiento', $cumple, 'sexo', $sexo, 'id_matricula', $id_matricula);
-    $profesor_id = checkValueExistance($pdoConnection,"id_profesor", "profesores", 'nombre', $nombre_profesor, 'apellido1', $apellido_profesor );
-}
+
 
 // We get the id_asignatura of the class to be able to perform a safe update.
 $class_id = checkValueExistance($pdoConnection, "id_asignatura", 'asignatura', 'nombre', $classe);

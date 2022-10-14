@@ -8,6 +8,7 @@ $nomprbre_profesor = "Esther";
 $apellido_profesor = "Spencer";
 $grado_nombre = "Desarrollo web avanzado";
 $departamento = "Informatica";
+$creditos = 6;
 
 function checkValueExistance(...$arguments){
     /** The function should receive at least 3 parameters, the first ons being a PDO connection.
@@ -50,7 +51,8 @@ $departamento_id = checkValueExistance($pdoConnection, 'id_departamento', 'depar
 
 if ($profesor_id && $grado_id && $departamento_id){
     foreach ($asignaturas as $asignatura){
-        $sql_insert_matricula = "INSERT INTO asignatura(nombre, id_profesor, id_grado, id_departamento) values ('$asignatura', '$profesor_id[0]', '$grado_id[0]', '$departamento_id[0]');";
+        $sql_insert_matricula = "INSERT INTO asignatura(nombre, id_profesor, id_grado, id_departamento, creditos)
+         values ('$asignatura', '$profesor_id[0]', '$grado_id[0]', '$departamento_id[0]', '$creditos');";
         echo $sql_insert_matricula."<br>";
         try{
             $insert_matricula = $pdoConnection->prepare($sql_insert_matricula);
