@@ -1,4 +1,7 @@
 <?php
+
+require_once "pdo_connection.php";
+
 function createSelectQuery (...$arguments){
     // var_dump($arguments);
     if (count($arguments) < 3){
@@ -76,6 +79,7 @@ function insertValue(...$arguments){
 }
 
 function executeSQLInstruction ($sql_instruction, $connection){
+    echo "holi ".$sql_instruction." ".$connection;
     try{
         $sql_order = $connection->prepare($sql_instruction);
         $sql_order->execute();
