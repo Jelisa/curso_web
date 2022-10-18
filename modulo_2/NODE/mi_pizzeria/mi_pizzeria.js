@@ -27,8 +27,7 @@ Condimentos.forEach((element, idx) =>{
     })
     counter += elementKeys.length
 })
-
-// console.log(CondimentosIdxsDictio)
+const ValidCondimentsIdxs = Object.keys(CondimentosIdxsDictio)
 
 const Beneficios = 1.45 // Este número equivale al 45% extra
 const IVA = 1.04 // Este número sirve para calcular el 4% extra
@@ -40,54 +39,36 @@ const rl = readline.createInterface({
 
 rl.question(MenusTitle+MasaTitle+createMenu(Masa,'masa'), function (masa) {
     let precio = 0
-    let masaId = parseInt(masa)
+    let masaId = parseInt(masa) - 1
     if (!isNaN(masaId) && masaId <= Masa.length){
-        precio += parseFloat(Masa[masaId-1].precio)
+        precio += parseFloat(Masa[masaId].precio)
     }
     else{
         console.log("La masa seleccionada no es válida");
         rl.close()
     }
     rl.question(CondimentosTitle+createMenu(Condimentos, 'condimentos'), function (condimentosSeleccionados) {
-        let i = 0;
         let condimentosAdded = [];
-        condimentosSeleccionados.split(',').forEach(elemento => {
-            if (Object.keys(CondimentosIdxsDictio).includes(elemento)){
-                if (!condimentosAdded.includes(elemento)) {
-                    precio += parseFloat(Condimentos[0][CondimentosIdxsDictio[elemento]])
-                    condimentosAdded.push(elemento)
+        condimentosSeleccionados.split(',').forEach(condimento => {
+            if (ValidCondimentsIdxs.includes(condimento)){
+                if (!condimentosAdded.includes(condimento)) {
+                    precio += parseFloat(Condimentos[0][CondimentosIdxsDictio[condimento]])
+                    condimentosAdded.push(condimento)
                 }
                 else{
-                    console.log(`El condimento ${elemento} ya ha sido añadido, no se añadirá otra vez.`)
+                    console.log(`El condimento ${condimento}.-${CondimentosIdxsDictio[condimento]} ya ha sido añadido, no se añadirá otra vez.`)
                 }
             }
+            else{
+                console.log(`El valor ${condimento} no es válido.`)
+            }
         })
-        // // console.log(isNaN(parseInt(condimento)))
-        // rl.prompt()
-        // if (isNaN(parseInt(condimento))){
-        //     rl.close()
-        // }
-        // else{
-        //     if (Object.keys(CondimentosIdxsDictio).includes(condimento)){
-        //         // precio += parseFloat(Condimentos[0][condimento])
-        //     }
-        // }
-        // for (let key of Object.keys(Condimentos[0])) {
-        //     if (condimentosIdxs.includes(++i)){
-        //         precio += parseFloat(Condimentos[0][key]);
-        //         condimentosIdxs.splice(condimentosIdxs.indexOf(i), 1)
-        //     }
-        // }
-        // if (condimentosIdxs.length != 0){
-        //     console.log(`Los condimentos '${condimentosIdxs.join(", ")}' no son válidos o ya se han añadido una vez`)}
+        console.log(pizzaCompositionString(masaId, condimentosAdded))
         precio *= Beneficios;
         precio *= IVA;
-        console.log('El precio TOTAL de tu pizza (incluyendo IVA) es:', precio.toFixed(2));
-        // if ()
+        console.log(`El precio TOTAL de tu pizza (incluyendo IVA) es: precio.toFixed(2)€`);
         rl.close()
     });
-    // console.log(0)
-    // rl.close()
 });
 rl.on('close', function () {
     process.exit(0);
@@ -108,4 +89,14 @@ function createMenu(options, type) {
     })
     menu += "\n";
     return menu;
+}
+
+function pizzaCompositionString(masaId, condimentosidxlist){
+    let composicionPizza = "La pizza seleccionada tiene:\n";
+    composicionPizza += `\tBase:\n\t\t- ${Masa[masaId].tipo}\n`
+    composicionPizza += `\tCondimentos:`
+    condimentosidxlist.forEach(element =>{
+        composicionPizza += `\n\t\t- ${CondimentosIdxsDictio[element]}`
+    })
+    return composicionPizza;
 }
