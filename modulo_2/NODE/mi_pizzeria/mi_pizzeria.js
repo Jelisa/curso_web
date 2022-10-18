@@ -23,9 +23,9 @@ let counter = 0;
 Condimentos.forEach((element, idx) =>{
     let elementKeys = Object.keys(element);
     elementKeys.forEach((key, idx) => {
-        CondimentosIdxsDictio[idx +1 + counter] = key;
+        CondimentosIdxsDictio[idx + 1 + counter] = key;
     })
-    counter += elementKeys.length
+    counter += elementKeys.length // Esto es por si en algún momento hubiese más de un objeto en condimentos.
 })
 const ValidCondimentsIdxs = Object.keys(CondimentosIdxsDictio)
 
@@ -38,8 +38,9 @@ const rl = readline.createInterface({
 });
 
 rl.question(MenusTitle+MasaTitle+createMenu(Masa,'masa'), function (masa) {
-    let precio = 0
-    let masaId = parseInt(masa) - 1
+    let precio = 0 // Let's set the price to Zero
+    // Convert the input from text to integer in order to compare with the length 
+    let masaId = parseInt(masa) - 1 
     if (!isNaN(masaId) && masaId <= Masa.length){
         precio += parseFloat(Masa[masaId].precio)
     }
@@ -66,7 +67,7 @@ rl.question(MenusTitle+MasaTitle+createMenu(Masa,'masa'), function (masa) {
         console.log(pizzaCompositionString(masaId, condimentosAdded))
         precio *= Beneficios;
         precio *= IVA;
-        console.log(`El precio TOTAL de tu pizza (incluyendo IVA) es: precio.toFixed(2)€`);
+        console.log(`El precio TOTAL de tu pizza (incluyendo IVA) es: ${precio.toFixed(2)}€`);
         rl.close()
     });
 });
@@ -75,6 +76,10 @@ rl.on('close', function () {
 });
 
 function createMenu(options, type) {
+    /**A function to generate the Menu.
+     * @param {Array} options - An array of objects containing information
+     * @param {String} type - A string to be used to determine how to navigate the objects and obtain the needed information.
+     */
     let menu = "";
     options.forEach((element, idx) => {
         if (type == "masa"){
@@ -92,6 +97,10 @@ function createMenu(options, type) {
 }
 
 function pizzaCompositionString(masaId, condimentosidxlist){
+    /** A function to create a ticket string
+     * @param {Int} masaId - An integer to obtain the type of masa from the Masa object
+     * @param {Array} condimentosidxlist - An array containing valid indexes to obtain the condiments names from the CondimentosIdxsDictio object.
+     */
     let composicionPizza = "La pizza seleccionada tiene:\n";
     composicionPizza += `\tBase:\n\t\t- ${Masa[masaId].tipo}\n`
     composicionPizza += `\tCondimentos:`
