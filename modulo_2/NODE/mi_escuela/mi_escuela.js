@@ -1,3 +1,4 @@
+//Jelisa Iglesias
 // Para una escuela de idiomas, hace falta saber:
 // 1) que alumnos son menores de edad, ya que se pasa la información de su asistencia a los padres
 // 2) que alumnos son mayores de 65, ya que disponen de un descuento en la matrícula, a razón de
@@ -48,14 +49,12 @@ function computeAge(birthday){
     birthday = new Date(birthday);
     let today = new Date();
     let anyos = today.getFullYear() - birthday.getFullYear();
-    if (anyos == 18){
-        if (birthday.getMonth() > today.getMonth() ){
+    if (birthday.getMonth() > today.getMonth() ){
+        anyos -= 1;
+    }
+    else if (birthday.getMonth() == today.getMonth()){
+        if (birthday.getDate() > today.getDate()){
             anyos -= 1;
-        }
-        else if (birthday.getMonth() == today.getMonth()){
-            if (birthday.getDate() > today.getDate()){
-                anyos -= 1;
-            }
         }
     }
     return anyos
