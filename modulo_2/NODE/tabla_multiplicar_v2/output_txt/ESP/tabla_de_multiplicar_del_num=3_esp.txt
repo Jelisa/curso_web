@@ -1,0 +1,14 @@
+================================
+== Tabla de multiplicar del num=3 ==
+================================
+num=3 x 1 = NaN
+num=3 x 2 = NaN
+num=3 x 3 = NaN
+num=3 x 4 = NaN
+num=3 x 5 = NaN
+num=3 x 6 = NaN
+num=3 x 7 = NaN
+num=3 x 8 = NaN
+num=3 x 9 = NaN
+num=3 x 10 = NaN
+================================

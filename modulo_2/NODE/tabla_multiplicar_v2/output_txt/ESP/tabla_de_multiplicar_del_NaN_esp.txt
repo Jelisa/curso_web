@@ -1,0 +1,14 @@
+================================
+== Tabla de multiplicar del NaN ==
+================================
+NaN x 1 = NaN
+NaN x 2 = NaN
+NaN x 3 = NaN
+NaN x 4 = NaN
+NaN x 5 = NaN
+NaN x 6 = NaN
+NaN x 7 = NaN
+NaN x 8 = NaN
+NaN x 9 = NaN
+NaN x 10 = NaN
+================================
