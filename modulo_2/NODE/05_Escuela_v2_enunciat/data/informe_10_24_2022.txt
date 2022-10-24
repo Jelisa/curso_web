@@ -1,0 +1,50 @@
+Alumnado del curso
+-------------------
+Zoe Ramirez
+calificación: 5.5
+Faltas de asistencia: 30-01-2022, 30-01-2021
+
+David Schmidt
+calificación: 5.5
+Faltas de asistencia: ninguna
+
+Cristina Lemke
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Esther Spencer
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Carmen Streich
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Alfredo Stiedemann
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Manolo Hamill
+calificación: 9
+Faltas de asistencia: ninguna
+
+Alejandro Kohler
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Antonio Fahey
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Guillermo Ruecker
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Micaela Monahan
+calificación: pendiente
+Faltas de asistencia: ninguna
+
+Francesca Schowalter
+calificación: pendiente
+Faltas de asistencia: ninguna
+

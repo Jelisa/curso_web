@@ -2,7 +2,7 @@ const argv = require('yargs')
     .option(
         'n', {
         alias: 'nombre',
-        demandOption: true,
+        demandOption: false,
         describe: 'Nombre completo del alumno.',
         type: 'string'
     }).option(
@@ -26,8 +26,7 @@ const argv = require('yargs')
     }).option(
         'i', {
             alias: 'informe',
-            default: `informe_${new Date().toLocaleDateString().replaceAll('/','_')}.txt`,
-            defaultDescription: "iforme_DD_MM_AAAA.txt",
+            defaultDescription: "./data/iforme_DD_MM_AAAA.txt",
             describe: "Generar informe en el directorio actual.",
             type: "string"
         }
@@ -37,9 +36,12 @@ const argv = require('yargs')
         if(typeof(argv.c) != "undefined" && isNaN(argv.c)){
             throw new Error("El operador ha de ser un número.");
         }
-        else{
-            return true;
+        if(typeof(argv.c) != "undefined" || typeof(argv.p) != "undefined" || typeof(argv.q) != "undefined" ){
+            if (typeof(argv.n) === "undefined" ){
+                throw new Error("Al intentar añadir una nota o quitar/poner faltas se ha de dar un nombre usando la opción n")
+            }
         }
+        return true;
     })
     .argv;
 
