@@ -3,16 +3,13 @@
 const argv = require('./config/yargs.js');
 const fs = require('fs')
 const process = require('process')
-const {ALUMNADO, ASISTENCIA, NOTAS} = loadJSONFileToObject("./config/data_filenames.json");
+const {REGISTRO_ALUMNOS, INFORMACION_ALUMNOS} = loadJSONFileToObject("./config/data_filenames.json");
 
-checkFileExists(ALUMNADO, 'exit');
+checkFileExists(REGISTRO_ALUMNOS, 'exit');
 
 if (argv.nombre !== undefined){
     checkStudentResgistration(argv.nombre)
 }
-
-// console.log(argv.calificacion)
-
 if (argv.calificacion !== undefined){
     addQualification(argv.nombre, argv.calificacion);
 }
@@ -22,76 +19,124 @@ if (argv.ponfalta !== undefined){
 if (argv.quitafalta !== undefined){
     removeAbsence(argv.nombre, argv.quitafalta);
 }
-if (argv.informe === ''){
-    const reportTitle = `./data/informe_${new Date().toLocaleDateString().replaceAll('/','_')}.txt`    
-    generateReport(reportTitle)
+if (argv.informe !== undefined){
+    if (argv.nombre != undefined){
+        if (argv.informe === ''){
+            // If no filename has been provided but the option has been selected the following name will be used.
+            const reportTitle = `./data/informe_${argv.nombre.toLowerCase().replaceAll(' ', '_')}_${new Date().toLocaleDateString().replaceAll('/','_')}.txt`    
+            generateReport(reportTitle, true, argv.nombre)
+        }
+        else {
+            generateReport(argv.informe, true, argv.nombre)
+        }
+    }
+    else{
+        if (argv.informe === ''){
+            // If no filename has been provided but the option has been selected the following name will be used.
+            const reportTitle = `./data/informe_${new Date().toLocaleDateString().replaceAll('/','_')}.txt`    
+            generateReport(reportTitle, true)
+        }
+        else {
+            generateReport(argv.informe, true)
+        }
+    }
 }
-else if (argv.informe !== undefined){
-    generateReport(argv.informe)
+if (argv.printReport){
+    if(argv.nombre != undefined){
+        generateReport('', false, argv.nombre)
+    }
+    else{
+        generateReport()
+    }
 }
 
-function generateReport(reportFilename, studentsFilename=ALUMNADO, gradesFilename=NOTAS, abscencesFilename=ASISTENCIA ) {
+function generateReport(reportFilename='', writeReport=false, studentName='', studentsFilename=REGISTRO_ALUMNOS, studentsInfoFilename=INFORMACION_ALUMNOS) {
     /**
-     * @param {String} studentsFilename -
+     * @param {String} reportFilename -
+     * @param {Boolean} writeReport -
      * @param {String} gradesFilename -
-     * @param {String} abscencesFilename -
+     * @param {String} studentsInfoFilename -
      */
 
     let students;
-    let grades = {}, abscences = {};
+    let studentsInfo = {};  
     if (checkFileExists(studentsFilename, 'exit')){
         students = loadJSONFileToObject(studentsFilename);
-        if (checkFileExists(gradesFilename)){
-            grades = loadJSONFileToObject(gradesFilename);
+        if (checkFileExists(studentsInfoFilename)){
+            studentsInfo = loadJSONFileToObject(studentsInfoFilename);
+            // console.log("🚀 ~ file: app.js ~ line 45 ~ generateReport ~ studentInfo", studentInfo)
         }
-        if (checkFileExists(abscencesFilename)){
-            abscences = loadJSONFileToObject(abscencesFilename);
+        let reportString;
+        if (!studentName){
+            console.log("🚀 ~ file: app.js ~ line 58 ~ generateReport ~ studentName", studentName)
+            const title = 'Alumnado del curso\n';
+            reportString = title + '-'.repeat(title.length) + '\n';
+            students.forEach( student => {
+                let alumno = [student.nombre, student.apellido].join(" ");
+                // console.log("🚀 ~ file: app.js ~ line 50 ~ generateReport ~ alumno", `'${alumno}'`)
+                reportString += generateStudentReport(alumno, studentsInfo)
+            })
         }
-        const title = 'Alumnado del curso\n';
-        let reportString = title + '-'.repeat(title.length) + '\n';
-        students.forEach( student => {
-            let alumno = [student.nombre, student.apellido].join(" ");
-            reportString += alumno + '\n'
-            if(typeof(grades[alumno]) === 'undefined'){
-                reportString += `calificación: pendiente\n`;
-            }
-            else{
-                reportString += `calificación: ${grades[alumno]}\n`;
-            }
-            if(typeof(abscences[alumno]) === 'undefined'){
-                reportString += `Faltas de asistencia: ninguna\n`;
-            }
-            else{
-                reportString += `Faltas de asistencia: ${abscences[alumno].join(', ')}\n`;
-            }
-            reportString += '\n'
-        })
-        fs.writeFileSync(reportFilename, reportString)
-    }
+        else{
+            const title = `Información estudiante: ${studentName}\n`;
+            reportString = title + '-'.repeat(title.length) + '\n';
+            reportString += generateStudentReport(studentName, studentsInfo)
+        }
+        if (argv.printReport){
+            console.log('\n' + reportString)
+        }
+        if (writeReport){
+            // console.log("🚀 ~ file: app.js ~ line 82 ~ generateReport ~ writeReport", writeReport)
+            fs.writeFileSync(reportFilename, reportString)
+        }
+    }    
+}
+
+function generateStudentReport(studentName, studentInfo){
     
+    let reportString = studentName + '\n'
+    if(typeof(studentInfo[studentName]) === 'undefined'){
+        reportString += `Calificación: pendiente\n`;
+        reportString += `Faltas de asistencia: ninguna\n`;
+    }
+    else{
+        if (studentInfo[studentName]['nota'] === undefined){
+            reportString += `Calificación: pendiente\n`;
+        }
+        else{
+            reportString += `calificación: ${studentInfo[studentName]['nota']}\n`;
+        }
+        if(typeof(studentInfo[studentName]['faltas']) === 'undefined'){
+            reportString += `Faltas de asistencia: ninguna\n`;
+        }
+        else{
+            reportString += `Faltas de asistencia: ${studentInfo[studentName]['faltas'].join(', ')}\n`;
+        }
+    }
+    reportString += '\n'
+    return reportString
 }
 
 function removeAbsence(studentName, date){
-    /**A function to remove a student abscence from the file ASISTENCIA
+    /**A function to remove a student abscence from the file INFORMACION_ALUMNOS
      * @param {String} studentName - The student full name.
      * @param  {String} date - A string containing the date.
      */
 
-    // Check for the date's format, if it's invalid the program will stop
-    checkDateFormat(date);
-    // Define a variable that will store the contents to write onto the file ASISTENCIA
+    // Check for the date's format, if it's invalid the program will stop, otherwise the format will be change to YYYY-MM-DD
+    let dateFileFormat = checkDateFormat(date);
+    // Define a variable that will store the contents to write onto the file INFORMACION_ALUMNOS
     let studentsAbscences;
-    if (checkFileExists(ASISTENCIA, 'warning')){
-        // check if the file ASISTENCIA exists and load it into memory
-        studentsAbscences = loadJSONFileToObject(ASISTENCIA);
+    if (checkFileExists(INFORMACION_ALUMNOS, 'warning')){
+        // check if the file INFORMACION_ALUMNOS exists and load it into memory
+        studentsAbscences = loadJSONFileToObject(INFORMACION_ALUMNOS);
 
-        let currentAbscences = checkStudentAbscences(studentName, date, studentsAbscences)
-        console.log("🚀 ~ file: app.js ~ line 39 ~ removeAbsence ~ currentAbscences", currentAbscences)
+        let currentAbscences = checkStudentAbscences(studentsAbscences[studentName]['faltas'], dateFileFormat)
 
         if (currentAbscences[0] === "repetida"){ // The date you want to remove is present
             // Let's remove  the abscence
-            currentAbscences = studentsAbscences[studentName] // THis assignment is made by refernces
-            currentAbscences.splice(currentAbscences.indexOf(date)) // In here we are modifiying the current variable and th original one too.
+            currentAbscences = studentsAbscences[studentName]['faltas'] // THis assignment is made by references
+            currentAbscences.splice(currentAbscences.indexOf(dateFileFormat)) // In here we are modifiying the current variable and th original one too.
         }
         else if (currentAbscences[0] === ["ninguna"]){
             console.warn(`Check your data: The student '${studentName}' doesn't have any abscence recorded, so it cannot be removed.`)
@@ -99,7 +144,7 @@ function removeAbsence(studentName, date){
         else{
             console.warn(`Check your data: The student '${studentName}' doesn't have an abscence recorded on the '${date}' thus it cannot be removed.`)
         }
-        writeJSONFileFromObject(ASISTENCIA, studentsAbscences)
+        writeJSONFileFromObject(INFORMACION_ALUMNOS, studentsAbscences)
     }else{
         console.warn("Warning: cannot remove abscences if none have been assigned.")
     }
@@ -108,44 +153,44 @@ function removeAbsence(studentName, date){
 }
 
 function addAbsence(studentName, date){
-    /**A function to add an Abscence to the students into the file ASISTENCIA
+    /**A function to add an Abscence to the students into the file INFORMACION_ALUMNOS
      * @param {String} studentName - The student full name.
      * @param  {String} date - A string containing the date.
      */
 
-    // Check for the date's format, if it's invalid the program will stop
-    checkDateFormat(date);
-    // Define a variable that will store the contents to write onto the file ASISTENCIA
+    // Check for the date's format, if it's invalid the program will stop, otherwise the format will be change to YYYY-MM-DD
+    let dateComputerFormat = checkDateFormat(date);
+    // Define a variable that will store the contents to write onto the file INFORMACION_ALUMNOS
     let studentsAbscences;
-    if (checkFileExists(ASISTENCIA, 'warning')){
-        // check if the file ASISTENCIA exists and load it into memory
-        studentsAbscences = loadJSONFileToObject(ASISTENCIA);
+    if (checkFileExists(INFORMACION_ALUMNOS, 'warning')){
+        // check if the file INFORMACION_ALUMNOS exists and load it into memory
+        studentsAbscences = loadJSONFileToObject(INFORMACION_ALUMNOS);
 
-        let currentAbscences = checkStudentAbscences(studentName, date, studentsAbscences, true)
+        let currentAbscences = checkStudentAbscences(studentsAbscences[studentName]['faltas'], dateComputerFormat, true)
+        //  Añadimos la fecha
         if (currentAbscences[0] === 'ninguna'  ){
-            studentsAbscences[studentName] = [date]
+            studentsAbscences[studentName]['faltas'] = [dateComputerFormat]
         }
         else if (currentAbscences[0] !== 'repetida'){
-            // // se matiene la información que está y listo
-            // studentsAbscences[studentName] = studentsAbscences[studentName]
-            studentsAbscences[studentName].push(date)
+            studentsAbscences[studentName]['faltas'].push(dateComputerFormat)
         }
+        // Let's sort the dates chronologically
+        studentsAbscences[studentName]['faltas'].sort()
     }
     else{
-        console.log(`Creating the file: ./${ASISTENCIA}`)
-        studentsAbscences = {[studentName] : [date]}
+        console.log(`Creating the file: ./${INFORMACION_ALUMNOS}`)
+        studentsAbscences = {[studentName] : {'faltas' :[dateComputerFormat]}}
     }
-    writeJSONFileFromObject(ASISTENCIA, studentsAbscences)
+    writeJSONFileFromObject(INFORMACION_ALUMNOS, studentsAbscences)
 }
 
-function checkStudentAbscences(studentName, date, asistencia, warningRepetition=false){
+function checkStudentAbscences(faltas, date,  warningRepetition=false){
     /**A function to check the students abscences.
-     * @param {String} studentName - The name of the student as found in the abscence object
+     * @param {Array} faltas - An array containing the dates of Abscence
      * @param {String} date -
      * @param {Object} asistencia - 
      * @param {Boolean} warningRepetition - 
      */
-    let faltas = asistencia[studentName];
     if( faltas ===  undefined){
         faltas = ["ninguna"];
     }
@@ -160,24 +205,31 @@ function checkStudentAbscences(studentName, date, asistencia, warningRepetition=
 
 function addQualification(studentName, grade){
     /**
-     * @param {String} studentName - The student name to add to the file NOTAS
+     * @param {String} studentName - The student name to add to the file INFORMACION_ALUMNOS
+     * @param {Int} grade - The numeric grade to add to the student.
      */
 
     // Define avariable to store de information to write to the file.
     let studentsGradeObject;
     
     // If the file exists load it into an Object and add/modify the student's grade
-    if (checkFileExists(NOTAS)){
-        studentsGradeObject = loadJSONFileToObject(NOTAS)
-        studentsGradeObject[studentName] = grade
+    if (checkFileExists(INFORMACION_ALUMNOS, 'warning')){
+        studentsGradeObject = loadJSONFileToObject(INFORMACION_ALUMNOS)
+        if (studentsGradeObject[studentName] ===  undefined){
+            studentsGradeObject[studentName] = {'nota': grade}
+        }
+        else{
+            studentsGradeObject[studentName]['nota'] = grade
+        }
     }
-    // If the file doesn't exist create a new object with the information
+    // If the file doesn't exist create a new object with the information and create the file.
     else{
-        studentsGradeObject = {[studentName]: grade}
+        console.log(`Creating the file: ./${INFORMACION_ALUMNOS}`)
+        studentsGradeObject = {[studentName]:{'nota': grade}}
     }
 
-    // write the information into the JSON file.
-    writeJSONFileFromObject(NOTAS, studentsGradeObject)
+    // write  the information into the JSON file. It will create the file of ot doesn't exist.
+    writeJSONFileFromObject(INFORMACION_ALUMNOS, studentsGradeObject)
 }
 
 function checkDateFormat(dateString){
@@ -198,7 +250,7 @@ function checkDateFormat(dateString){
         console.error(`Invalid date '${dateString}'. Review the date numbers.`);
         process.exit(1);
     }
-  
+    return date.toLocaleDateString('en-CA')
 }
 
 function checkStudentResgistration(studentFullName){
@@ -207,12 +259,12 @@ function checkStudentResgistration(studentFullName){
      */
     // The name and the surname should be separated by a white space
     const [nombre, apellido] = studentFullName.split(' ');
-    const alumnos = loadJSONFileToObject(ALUMNADO);
+    const alumnos = loadJSONFileToObject(REGISTRO_ALUMNOS);
     const alumno_exists = alumnos.filter(alumno => 
         alumno.nombre.toLowerCase() == nombre.toLowerCase() &&
             alumno.apellido.toLowerCase() == apellido.toLowerCase())   
     if (alumno_exists.length == 0){
-        console.error(`El alumno '${studentFullName}' no está registrado.\nRevisa el nombre.`)
+        console.error(`El/La alumno/a '${studentFullName}' no está registrado/a.\nRevisa el nombre.`)
         process.exit(1)
     }
 }

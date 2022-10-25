@@ -1,9 +1,8 @@
 const fs = require("fs");
 
 const DEFAULT_FILES = {
-    'ALUMNADO': 'data/alumnos.json',
-    'ASISTENCIA': 'data/faltas.json',
-    'NOTAS': 'data/calificaciones.json',
+    'REGISTRO_ALUMNOS': 'data/alumnos.json',
+    'INFORMACION_ALUMNOS': 'data/alumnos_info.json'
 }
 
 const IDIOMAS_STRING = JSON.stringify(DEFAULT_FILES);
