@@ -44,9 +44,12 @@ const argv = require('yargs')
         if(typeof(argv.c) != "undefined" && isNaN(argv.c)){
             throw new Error("El operador ha de ser un número.");
         }
+        if (typeof(argv.nombre) != 'undefined' && typeof(argv.nombre) !="string"){
+            throw new Error("El nombre ha de ser un string. Revisa los parámetros")
+        }
         // Si se usa algun de las opciones para modificar los datos de un alumno este se ha de proveer.
         if(typeof(argv.c) != "undefined" || typeof(argv.p) != "undefined" ||
-            typeof(argv.q) != "undefined" || typeof(argv.s) != "undefined" ){
+            typeof(argv.q) != "undefined"  ){
             if (typeof(argv.n) === "undefined" ){
                 throw new Error("Al intentar añadir una nota o quitar/poner faltas se ha de dar un nombre usando la opción n")
             }
