@@ -1,0 +1,14 @@
+{
+  "name": "jelisa_iglesias_10-28_evaluacion_continua",
+  "version": "1.0.0",
+  "description": "Prueba de evaluacion continuada de Jelisa Iglesias",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jelisa Iglesias",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
