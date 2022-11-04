@@ -1,0 +1,15 @@
+{
+  "name": "uf1844_practica",
+  "version": "1.0.0",
+  "description": "Solución a la prueba práctica final de la unidad UF144.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jelisa Iglesias",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
