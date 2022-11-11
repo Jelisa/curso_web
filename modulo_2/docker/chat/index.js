@@ -8,7 +8,7 @@ const io = require('socket.io')(HTTP);
 const PORT = process.env.PORT || 8080;
 
 console.log(PORT);
-APP.get('/', (req, res) => {
+APP.get('/chat', (req, res) => {
     res.render("index.ejs")
 })
 
