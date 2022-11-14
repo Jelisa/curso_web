@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const router = require('./routes/routes.js');
 const {join} = require('node:path')
 
-const staticFolder = "html"
+const staticFolder = "./html"
 
 const app = express();
 
