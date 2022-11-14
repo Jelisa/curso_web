@@ -1,0 +1,2 @@
+docker build -t node-scraper .
+docker run -it node-scraper -p 4000:4000
