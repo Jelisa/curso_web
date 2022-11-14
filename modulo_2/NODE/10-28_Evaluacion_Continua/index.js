@@ -116,3 +116,8 @@ function filterDataByGrade(data, thresholdNumber, type){
     // Return the filtered data/ error message.
     return filteredResults;
 }
+
+module.exports = {
+    filterDataByGrade,
+    
+}
