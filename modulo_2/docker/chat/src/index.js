@@ -1,5 +1,6 @@
 const express = require("express");
-
+const {join} = require('node:path')
+// console.log(0, );
 const APP = express();
 
 const HTTP = require('http').Server(APP);
@@ -12,17 +13,18 @@ APP.get('/chat', (req, res) => {
     res.render("index.ejs")
 })
 
+APP.set('views', join(__dirname, 'views'))
+
 io.sockets.on("connection", (socket) => {
-    console.log('hola');
+    // console.log('hola');
     /** Socket listening for the variable username */
     socket.on('username', (username) => {
-        console.log(username);
+        // console.log(username);
         socket.username = username;
         io.emit("is_online", `<i> ${socket.username} se ha unido al chat.</i>`)
     })
 
-    socket.on("disconnect", (username)=>{
-        socket.username = username;
+    socket.on("disconnect", ()=>{
         io.emit("is_online", `<i> ${socket.username} se ha desconectado del chat.</i>`)
     })
 
