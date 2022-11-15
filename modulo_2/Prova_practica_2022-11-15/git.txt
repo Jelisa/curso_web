@@ -1,0 +1,55 @@
+# Creacion de repositorios
+
+Hay dos opciones para crear tu repositorio:
+ A. Crearlo local y subirlo al servidor de tu elección.
+ B. Crearlo en el servidor y clonarlo al local.
+
+
+## OPCION A
+
+1. En la carpeta de tu proyecto ejectua:
+
+$> git init
+
+1.5. Si la rama que se ha generado por defecto es la master se ha de cambiar al main para evitar problemas con github. Para ello ejectuamos:
+
+$> git branch -m master main
+
+2. Realiza los commits que sean necesarios via, al  menos un primer comit de inicialización SIEMPRE es necesario:
+
+$> git commit -m "mensaje del commit"
+
+2.5. Añade los ficheros a seguir via:
+
+$>git add .  // Esta instrucción añade todos los ficheros.
+
+Realiza los commmits y adds que necesites.
+
+3. Añade el repositorio que previamente has creado, en este caso uno de GitHub
+
+$> git remote add origin https://github.com/yourusername/your-repo-name.git
+
+4. Sube la información al origen 
+
+$> git push -u origin main 
+
+## OPCION B
+
+1. Crea un repositorio vacío de git en un proovedor online en este caso GitHub.
+
+2. Clona tu repositorio vía:
+
+$> git clone https://github.com/yourusername/your-repo-name.git
+
+3. Baja la información que haya en GitHub via:
+
+$> git pull
+
+4. Haz las modificaciones y cambios que necesites y registralos via:
+
+$> git add .
+$> git commit -m "Mensaje del commit"
+
+5. Sube tus cambios via:
+
+$> git push
