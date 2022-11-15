@@ -2,48 +2,52 @@
 /**
  * Import the required packages
  */
- const  express = require('express');
- const  { load } = require('cheerio');
- const  axios = require('axios');
- const  cors = require('cors');
- const  { join } = require('path');
+const  express = require('express');
+const  { load } = require('cheerio');
+const  axios = require('axios');
+const  cors = require('cors');
+const  { join } = require('path');
 
- /**
-  * Set general variables
-  */
- const PORT = process.env.PORT || 4000;
- const urlToScrape = "https://quotes.toscrape.com";
+/**
+ * Set general variables
+ */
+const PORT = process.env.PORT || 4000;
+const urlToScrape = "https://quotes.toscrape.com";
 
- const STATIC = "htmlSrc";
+const STATIC = "htmlSrc";
  
- const HOST = process.env.HOSTNAME || 'localhost';
- 
- const SELF_ROOT_URL = `http://${HOST}:${PORT}/`
- 
- // create de server
- const app = express();
- // usar cors para evitar error de fiveserver
- app.use(cors())
- // path to the static files
- app.use(express.static(join(__dirname, STATIC)))
-  
- // Initial root
- app.get('/scraper', (req, res) => {
+// Create de server
+const app = express();
+// Use cors to avoid  self-referencing errors
+app.use(cors())
+
+// Path to the static files, this include the predefined root folder
+app.use(express.static(join(__dirname, STATIC)))
+
+// Scraper root
+app.get('/scraper', (req, res) => {
+    // use axios to obtain the html information via a promise
     axios(urlToScrape).then((response) => {
-        const html = response.data;
-        const $ = load(html);
-        const productos = [];
+        // It  will give us a response. that we can load via cheerios
+        const $ = load(response.data);
+        // Empty array to store the retrived information in objects
+        const quotes = [];
+        // using cheerios look for each item of class quote
         $('.quote', html).each(function () {
+            // obtain the text 
             const text = $(this).find('span.text').text().trim();
+            // obtain the autor 
             const autor = $(this).find('small.author').text().trim();
-            productos.push({ autor,text });
+            // add the information as an object to the quotes array
+            quotes.push({ autor,text });
         })
-        res.json(productos)
+        // Send the information as a json to the page.
+        res.json(quotes)
     }).catch((err) => {
+        // If there's an error catch it and print the error information.
         console.log(err);
     });
- });
+});
 
- 
- // Start listening on the port.
- app.listen(PORT, () => console.log(`listening on ${SELF_ROOT_URL}`));
+// Start listening on the port.
+app.listen(PORT, () => console.log(`Service running`));
