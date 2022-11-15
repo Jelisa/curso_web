@@ -10,9 +10,18 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="container-fluid align-content-between"  id="quotes">
-        <h1>Frases famosas</h1>
+    <div class="container text-center">
+        <h1 class="m-5">Frases famosas</h1>
+        <div class="row" id="quotes"></div>
     </div>
+    <template id="quoteCard">
+        <div class="card border-primary col-5 mb-3 mx-1">
+            <div class="card-body text-center">
+                <h2 class="card-title text-primary author"></h2>
+                <p class="quoteText"></p>
+            </div>
+        </div>
+    </template>
     <script src="./js/web_index.js"></script>
 </body>
 </html>
