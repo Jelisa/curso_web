@@ -1,55 +1,38 @@
-# Creacion de repositorios
+# Creacion de repositorio
 
-Hay dos opciones para crear tu repositorio:
- A. Crearlo local y subirlo al servidor de tu elección.
- B. Crearlo en el servidor y clonarlo al local.
+0. Iniciar gitBash desde el inicio de windows y mover al directorio
 
-
-## OPCION A
+$> cd Documents/GitHub/eval_uf1846/
 
 1. En la carpeta de tu proyecto ejectua:
 
 $> git init
 
-1.5. Si la rama que se ha generado por defecto es la master se ha de cambiar al main para evitar problemas con github. Para ello ejectuamos:
+2. Si la rama que se ha generado por defecto es la master se ha de cambiar al main para evitar problemas con github. Para ello ejectuamos:
 
 $> git branch -m master main
 
-2. Realiza los commits que sean necesarios via, al  menos un primer comit de inicialización SIEMPRE es necesario:
+3. Realiza los commits que sean necesarios via, al  menos un primer comit de inicialización SIEMPRE es necesario:
 
-$> git commit -m "mensaje del commit"
+$> git commit -m "Inicialización del repositorio"
 
-2.5. Añade los ficheros a seguir via:
+4. Crear .gitignore y añadir el node_modules
 
+5. Comprovar que funciona correctamente
+
+$> git status
+
+6. Añade los ficheros 
 $>git add .  // Esta instrucción añade todos los ficheros.
 
-Realiza los commmits y adds que necesites.
+7. Realiza un commit de los ficheros
+$> git commit "Ejercicio implementado"
+8. Añade el repositorio que previamente has creado, en este caso uno de GitHub
 
-3. Añade el repositorio que previamente has creado, en este caso uno de GitHub
+$> git remote add origin https://github.com/Jelisa/eval-uf1846.git
 
-$> git remote add origin https://github.com/yourusername/your-repo-name.git
+9. Aplica la rama main como rama principal
+$> git branch -M main
 
-4. Sube la información al origen 
-
-$> git push -u origin main 
-
-## OPCION B
-
-1. Crea un repositorio vacío de git en un proovedor online en este caso GitHub.
-
-2. Clona tu repositorio vía:
-
-$> git clone https://github.com/yourusername/your-repo-name.git
-
-3. Baja la información que haya en GitHub via:
-
-$> git pull
-
-4. Haz las modificaciones y cambios que necesites y registralos via:
-
-$> git add .
-$> git commit -m "Mensaje del commit"
-
-5. Sube tus cambios via:
-
-$> git push
+10. Sube la información al origen
+git push -u origin main
